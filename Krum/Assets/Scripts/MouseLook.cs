@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
+    CharacterInput characterinput;
 
     public float mouseSensitivity = 500f;
 
@@ -14,6 +15,8 @@ public class MouseLook : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        characterinput = GetComponent<CharacterInput>();
+
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -31,4 +34,5 @@ public class MouseLook : MonoBehaviour
             playerbody.Rotate(Vector3.up * mouseX);
 
     }
+
 }
