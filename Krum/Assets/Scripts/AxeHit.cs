@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AxeHit : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class AxeHit : MonoBehaviour
     public float range = 1.5f;
     public float Damage = 10f;
     public float swingRate = 1f;
-   
+
 
     private float nextTimetoSwing = 0f;
 
@@ -22,52 +23,62 @@ public class AxeHit : MonoBehaviour
     {
         anim = gameObject.GetComponent<Animator>();
     }
-    
+
     public void Update()
     {
         if (Input.GetMouseButtonDown(0) && Time.time >= nextTimetoSwing)
         {
             nextTimetoSwing = Time.time + 1f / swingRate;
+            StartCoroutine(Swing());
             Hit();
         }
     }
 
-    
+
     public void Hit()
     {
         anim.SetTrigger("Active");
 
+    }
+
+
+    public IEnumerator Swing()
+    {
+        yield return new WaitForSeconds(1.2f);
+
         RaycastHit hit;
-        if(Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
+        if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
         {
             UnityEngine.Debug.Log(hit.transform.name);
 
             TreeFall treeFall = hit.transform.GetComponent<TreeFall>();
-            if(treeFall != null)
+            if (treeFall != null)
             {
-                if(AxeTrue == true)
+                if (AxeTrue == true)
                 {
                     treeFall.TakeDamage(Damage);
                 }
 
-                Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal)); 
+                Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            }
+
+        }
+
+    }
+
+
+        public void SetAxe()
+        {
+            if (AxeTrue == false)
+            {
+                AxeTrue = true;
+            }
+            if (AxeTrue == true)
+            {
+                AxeTrue = false;
             }
         }
+
+
     }
 
-
-
-    public void SetAxe()
-    {
-        if(AxeTrue == false)
-        {
-            AxeTrue = true;
-        }
-        if(AxeTrue == true)
-        {
-            AxeTrue = false;
-        }
-    }
-    
-   
-}
