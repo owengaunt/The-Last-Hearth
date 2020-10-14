@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
     private bool inventoryEnabled;
-    public GameObject inventory;
 
+    public GameObject inventory;
+   
     private int allSlots;
     private int enabledSlots;
     private GameObject[] slot;
@@ -30,7 +32,9 @@ public class Inventory : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
+        
             inventoryEnabled = !inventoryEnabled;
+
 
         if (inventoryEnabled == true)
         {
@@ -40,8 +44,9 @@ public class Inventory : MonoBehaviour
         {
             inventory.SetActive(false);
         }
-            
-      }
+        
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {

@@ -17,7 +17,7 @@ public class AxeHit : MonoBehaviour
     public float swingRate = 1f;
 
 
-    private float nextTimetoSwing = 0f;
+    private float nextTimetoSwing = 1f;
 
     public void Start()
     {
