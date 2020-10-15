@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class TreeFall : MonoBehaviour
 {
+    AxeHit axeHit;
+
     public float health = 50f;
     public float thrust = 1.0f;
+
 
     public Rigidbody rb;
 
     public void Start()
     {
+     
         rb = GetComponent<Rigidbody>();
     }
 
@@ -19,7 +23,8 @@ public class TreeFall : MonoBehaviour
         health -= amount;
         if (health <= 0f)
         {
-            Die();
+          
+           Die();
         }
     }
     void Die()

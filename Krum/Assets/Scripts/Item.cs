@@ -23,19 +23,9 @@ public class Item : MonoBehaviour
     
     public void Start()
     {
-        weaponManager = GameObject.FindWithTag("WeaponManager");
+        
 
-        if (!playersWeapon)
-        {
-            int allWeapons = weaponManager.transform.childCount;
-            for (int i = 0; i < allWeapons; i++)
-            {
-                if(weaponManager.transform.GetChild(i).gameObject.GetComponent<Item>().ID == ID)
-                {
-                    weapon = weaponManager.transform.GetChild(i).gameObject;
-                }
-            }
-        }
+        
     }
 
 
