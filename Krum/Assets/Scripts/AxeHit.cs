@@ -12,6 +12,8 @@ public class AxeHit : MonoBehaviour
     public GameObject impactEffect;
 
     public bool AxeTrue = true;
+    public bool HitReady = false;
+
     public float range = 1.5f;
     public float Damage = 10f;
     public float swingRate = 1f;
@@ -35,36 +37,43 @@ public class AxeHit : MonoBehaviour
     }
 
 
+
     public void Hit()
     {
         anim.SetTrigger("Active");
-
     }
+    
 
-
-    public IEnumerator Swing()
-    {
-        yield return new WaitForSeconds(1.4f);
-
-        RaycastHit hit;
-        if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
+        public IEnumerator Swing()
         {
-            UnityEngine.Debug.Log(hit.transform.name);
 
-            TreeFall treeFall = hit.transform.GetComponent<TreeFall>();
-            if (treeFall != null)
             {
-                if (AxeTrue == true)
-                {
-                    treeFall.TakeDamage(Damage);
-                }
+                yield return new WaitForSeconds(1.4f);
 
-                Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                nextTimetoSwing = Time.time + 1f / swingRate;
+
+                RaycastHit hit;
+                if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
+                {
+
+                    UnityEngine.Debug.Log(hit.transform.name);
+
+                    TreeFall treeFall = hit.transform.GetComponent<TreeFall>();
+                    if (treeFall != null)
+                    {
+                        if (AxeTrue == true)
+                        {
+                            treeFall.TakeDamage(Damage);
+                        }
+
+                        Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                    }
+
+                }
             }
 
-        }
 
-    }
+        }
 
 
         public void SetAxe()
@@ -78,7 +87,7 @@ public class AxeHit : MonoBehaviour
                 AxeTrue = false;
             }
         }
+    
 
-
-    }
+}
 
