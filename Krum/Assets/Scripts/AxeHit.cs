@@ -44,7 +44,7 @@ public class AxeHit : MonoBehaviour
 
     public IEnumerator Swing()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1.4f);
 
         RaycastHit hit;
         if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
