@@ -257,5 +257,9 @@ MonoBehaviour:
   ID: 0
   type: Resource
   description: Building Material
-  icon: {fileID: 21300000, guid: 19b40e38a3e594023bd813a22e91579a, type: 3}
+  icon: {fileID: 21300000, guid: 231257174ca4f406dad141a91a30eb8f, type: 3}
   pickedUp: 0
+  equipped: 0
+  weaponManager: {fileID: 0}
+  weapon: {fileID: 0}
+  playersWeapon: 0

@@ -1,26 +1,35 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
+    Edibles edibles;
+    Drinkables drinkables;
+    AxeHit axeHit;
     CharacterInput characterinput;
-
     CharacterController character;
+
+    public float swingRate = 1f;
+    private float nextTimetoSwing = 2f;
 
     public float health;
     public float healthOverTime;
 
     public float thirst;
     public float thirstOverTime;
+    public float drinkOverTime;
 
     public float hunger;
     public float hungerOverTime;
+    public float eatOverTime;
 
     public float stamina;
     public float staminaOverTime;
     public float staminaChopOverTime;
+   
 
     
     public Slider healthBar;
@@ -28,7 +37,7 @@ public class PlayerStats : MonoBehaviour
     public Slider hungerBar;
     public Slider staminaBar;
 
-    public float minAmount = 5f;
+    public float minAmount = 0f;
 
    CharacterController myBody;
   
@@ -36,6 +45,9 @@ public class PlayerStats : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        edibles = GetComponent<Edibles>();
+        drinkables = GetComponent<Drinkables>();
+        axeHit = GetComponent<AxeHit>();
         myBody = GetComponent<CharacterController>();
         characterinput = GetComponent<CharacterInput>();
 
@@ -48,24 +60,22 @@ public class PlayerStats : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    public void Update()
     {
         CalculateValues();
     }
 
-    private void CalculateValues()
+    public void CalculateValues()
     {
-        hunger -= hungerOverTime * Time.deltaTime;
-        thirst -= thirstOverTime * Time.deltaTime;
 
-        if(hunger <= minAmount || thirst <= minAmount)
+        if (hunger <= minAmount || thirst <= minAmount)
     {
             health -= healthOverTime * Time.deltaTime;
             stamina -= staminaOverTime * Time.deltaTime;
     }
-       
 
-        if (Input.GetMouseButton(0))
+
+        if (Input.GetMouseButtonDown(0) && Time.time >= nextTimetoSwing)
         {
             StartCoroutine(Swinging());
         }
@@ -90,7 +100,7 @@ if (Input.GetKey(characterinput.sprintkey))
     }
 
 
-    private void updateUI()
+    public void updateUI()
     {
        health = Mathf.Clamp(health, 0, 100f);
        thirst = Mathf.Clamp(thirst, 0, 100f);

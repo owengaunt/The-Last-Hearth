@@ -1,0 +1,9 @@
+Thank you for buying this package!
+
+If you have any problem with it feel free to contact us.
+
+To start just drag the "MassiveFoliageMeshPlacer" into your scene and follow the steps.
+
+
+**LEGAL**
+You may use this package for any use, except using its content for reselling.

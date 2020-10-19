@@ -18,8 +18,10 @@ public class AxeHit : MonoBehaviour
     public float Damage = 10f;
     public float swingRate = 1f;
 
+    public AudioSource axeWood;
 
-    private float nextTimetoSwing = 1f;
+
+    private float nextTimetoSwing = 1.3f;
 
     public void Start()
     {
@@ -28,10 +30,8 @@ public class AxeHit : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Time.time >= nextTimetoSwing)
+        if (Input.GetMouseButton(0))
         {
-            nextTimetoSwing = Time.time + 1f / swingRate;
-            StartCoroutine(Swing());
             Hit();
         }
     }
@@ -41,16 +41,17 @@ public class AxeHit : MonoBehaviour
     public void Hit()
     {
         anim.SetTrigger("Active");
+        StartCoroutine(Swing());
     }
     
 
         public IEnumerator Swing()
         {
 
-            {
-                yield return new WaitForSeconds(1.4f);
-
-                nextTimetoSwing = Time.time + 1f / swingRate;
+        if(Time.time >= nextTimetoSwing)
+        {
+            nextTimetoSwing = Time.time + 1f / swingRate;
+            yield return new WaitForSeconds(1.3f);
 
                 RaycastHit hit;
                 if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
@@ -67,11 +68,13 @@ public class AxeHit : MonoBehaviour
                         }
 
                         Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+
+                    axeWood.Play();
                     }
 
                 }
-            }
-
+            
+        }       
 
         }
 

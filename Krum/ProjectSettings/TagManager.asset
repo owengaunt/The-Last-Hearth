@@ -8,6 +8,8 @@ TagManager:
   - FxTemporaire
   - Item
   - WeaponManager
+  - Solid
+  - Liquid
   layers:
   - Default
   - TransparentFX
