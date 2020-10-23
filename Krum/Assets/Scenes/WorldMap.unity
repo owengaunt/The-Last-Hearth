@@ -2985,7 +2985,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3.01
+  m_Intensity: 3
   m_Range: 12.230565
   m_SpotAngle: 56.25121
   m_InnerSpotAngle: 1
@@ -8627,7 +8627,7 @@ MonoBehaviour:
   gravity: -30
   jumpHeight: 2.2
   walkspeed: 6
-  runspeed: 12
+  runspeed: 8
   crouchspeed: 3
   groundCheck: {fileID: 1680064856}
   groundDistance: 0.9

@@ -51,7 +51,7 @@ public class AxeHit : MonoBehaviour
         if(Time.time >= nextTimetoSwing)
         {
             nextTimetoSwing = Time.time + 1f / swingRate;
-            yield return new WaitForSeconds(1.3f);
+            yield return new WaitForSeconds(1.4f);
 
                 RaycastHit hit;
                 if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
