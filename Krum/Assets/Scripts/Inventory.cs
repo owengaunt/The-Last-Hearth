@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        allSlots = 39;
+        allSlots = 40;
         slot = new GameObject[allSlots];
        
             for (int i = 0; i < allSlots; i++)
@@ -39,6 +39,7 @@ public class Inventory : MonoBehaviour
         if (inventoryEnabled == true)
         {
             inventory.SetActive(true);
+            
         }
         else
         {
@@ -83,6 +84,7 @@ public class Inventory : MonoBehaviour
 
             return;
         }
+       
     }
 
 }

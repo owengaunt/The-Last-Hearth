@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed1a9b033e7349ecbd62fa6572dd623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 1
   type: Resource
   description: Building Material
   icon: {fileID: 21300000, guid: 231257174ca4f406dad141a91a30eb8f, type: 3}
