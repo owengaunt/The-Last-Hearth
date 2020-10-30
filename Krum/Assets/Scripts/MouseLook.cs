@@ -42,7 +42,7 @@ public class MouseLook : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (inventoryIsClosed == true)
             {

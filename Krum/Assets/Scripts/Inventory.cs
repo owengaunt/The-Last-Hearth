@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        allSlots = 40;
+        allSlots = 39;
         slot = new GameObject[allSlots];
        
             for (int i = 0; i < allSlots; i++)
@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.E))
         
             inventoryEnabled = !inventoryEnabled;
 
