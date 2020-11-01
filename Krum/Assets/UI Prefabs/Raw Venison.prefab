@@ -53,19 +53,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3278112690074156302, guid: daea57762a9b3460b908254c7e9d1187, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -85
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 3278112690074156302, guid: daea57762a9b3460b908254c7e9d1187, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 190
+      value: 223
       objectReference: {fileID: 0}
     - target: {fileID: 3278112690074156302, guid: daea57762a9b3460b908254c7e9d1187, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3278112690074156302, guid: daea57762a9b3460b908254c7e9d1187, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3278112690074156302, guid: daea57762a9b3460b908254c7e9d1187, type: 3}
       propertyPath: m_AnchorMin.x
@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3806921848399932654, guid: daea57762a9b3460b908254c7e9d1187, type: 3}
       propertyPath: m_Name
-      value: Venison
+      value: Raw Venison
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daea57762a9b3460b908254c7e9d1187, type: 3}

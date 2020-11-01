@@ -15,5 +15,5 @@ MonoBehaviour:
   prefab: {fileID: 4309494304425808367, guid: 61845c8de0b944383b4d55bab44769ee, type: 3}
   type: 1
   description: Cutting and Slashing Small Trees, also Can Save Your Life
-  atkBonus: 0
+  atkBonus: 30
   dfsBonus: 0

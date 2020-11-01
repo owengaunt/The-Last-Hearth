@@ -7,9 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2573546614630319100, guid: 3ddfdf6c426ec4029a4f3faefc3ab45c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573546614630319100, guid: 3ddfdf6c426ec4029a4f3faefc3ab45c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6973602217194542576, guid: 3ddfdf6c426ec4029a4f3faefc3ab45c, type: 3}
       propertyPath: m_Name
-      value: Image
+      value: Cooked Venison
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090526175274178734, guid: 3ddfdf6c426ec4029a4f3faefc3ab45c, type: 3}
+      propertyPath: m_fontSize
+      value: 26.85
       objectReference: {fileID: 0}
     - target: {fileID: 8749899356235957264, guid: 3ddfdf6c426ec4029a4f3faefc3ab45c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -57,19 +69,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8749899356235957264, guid: 3ddfdf6c426ec4029a4f3faefc3ab45c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -85
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 8749899356235957264, guid: 3ddfdf6c426ec4029a4f3faefc3ab45c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 190
+      value: 223
       objectReference: {fileID: 0}
     - target: {fileID: 8749899356235957264, guid: 3ddfdf6c426ec4029a4f3faefc3ab45c, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8749899356235957264, guid: 3ddfdf6c426ec4029a4f3faefc3ab45c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8749899356235957264, guid: 3ddfdf6c426ec4029a4f3faefc3ab45c, type: 3}
       propertyPath: m_AnchorMin.x
