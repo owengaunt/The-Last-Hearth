@@ -190,7 +190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 51.200043, y: 0.000061035156}
+  m_AnchoredPosition: {x: 51.19995, y: 0}
   m_SizeDelta: {x: -502.6895, y: 0.00024414062}
   m_Pivot: {x: 0.49999994, y: 0.4999999}
 --- !u!114 &194475076
@@ -206,15 +206,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.70980394}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -243,12 +243,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202c42ef81bc3a24f87c57c74c98c094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryPrefab: {fileID: 7913643964762865519, guid: ccdad3b9cb2a8459b91872ddb14c0024, type: 3}
   inventory: {fileID: 11400000, guid: f67623fa3f9494c5f888b631e762e10b, type: 2}
-  X_START: -100
-  Y_START: 150
-  X_SPACE_BETWEEN_ITEMS: 35
-  NUMBER_OF_COLUMN: 6
-  Y_SPACE_BETWEEN_ITEMS: 35
+  X_START: -95
+  Y_START: 210
+  X_SPACE_BETWEEN_ITEMS: 95
+  NUMBER_OF_COLUMN: 3
+  Y_SPACE_BETWEEN_ITEMS: 95
 --- !u!1 &219470170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1915,8 +1916,8 @@ MonoBehaviour:
   CharacterController: {fileID: 1353746123}
   gravity: -30
   jumpHeight: 1.5
-  walkspeed: 6
-  runspeed: 8
+  walkspeed: 4
+  runspeed: 9
   crouchspeed: 3
   groundCheck: {fileID: 1680064856}
   groundDistance: 0.9
@@ -2839,7 +2840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
+  m_ReferencePixelsPerUnit: 20
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
