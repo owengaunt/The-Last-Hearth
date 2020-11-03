@@ -13,12 +13,11 @@ GameObject:
   - component: {fileID: 6809609395086183095}
   - component: {fileID: 6809609395086183094}
   - component: {fileID: 6809609395086183093}
-  - component: {fileID: 6809609395086183092}
   - component: {fileID: 6809609395086183051}
   - component: {fileID: 6809609395086183050}
   - component: {fileID: 6809609395086183089}
   m_Layer: 0
-  m_Name: FrostAxe (1)
+  m_Name: AxePickup
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,26 +124,11 @@ MonoBehaviour:
   fpscam: {fileID: 0}
   impactEffect: {fileID: 100002, guid: ac1aa04288fad804ba1cd769f4377aaf, type: 3}
   AxeTrue: 1
+  HitReady: 0
   range: 1.5
   Damage: 10
   swingRate: 1
---- !u!114 &6809609395086183092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6809609395086183048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed1a9b033e7349ecbd62fa6572dd623, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 1
-  type: Weapon
-  description: An axe for cutting trees
-  icon: {fileID: 21300000, guid: 3d2c3ec6cfd8544e1962c7310f67d360, type: 3}
-  pickedUp: 0
+  axeWood: {fileID: 0}
 --- !u!65 &6809609395086183051
 BoxCollider:
   m_ObjectHideFlags: 0

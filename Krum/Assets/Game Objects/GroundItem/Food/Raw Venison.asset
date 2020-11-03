@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 625b64214b4df4f8d9dbf77d6a04c36b, type: 3}
   m_Name: Raw Venison
   m_EditorClassIdentifier: Assembly-CSharp::NewBehaviourScript
-  prefab: {fileID: 1625860221960427183, guid: d125abe325b5f48958be077b750d8e26, type: 3}
+  Id: 2
+  uiDisplay: {fileID: 0}
   type: 0
   description: The Meat That Comes From Killing A Deer And Is Not Yet Cooked
-  restorehungervalue: 30
+  buffs:
+  - attribute: 3
+    value: 0
+    min: 20
+    max: 40
+  - attribute: 5
+    value: 0
+    min: 30
+    max: 80

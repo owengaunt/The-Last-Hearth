@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 625b64214b4df4f8d9dbf77d6a04c36b, type: 3}
   m_Name: Cooked Venison
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3806921848399932654, guid: daea57762a9b3460b908254c7e9d1187, type: 3}
+  Id: 1
+  uiDisplay: {fileID: 0}
   type: 0
   description: A Hearty Meal for a Lone Survivor
-  restorehungervalue: 70
+  buffs:
+  - attribute: 3
+    value: 0
+    min: 40
+    max: 60

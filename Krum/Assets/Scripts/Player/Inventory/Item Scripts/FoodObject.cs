@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class FoodObject : ItemObject
 {
-    public int restorehungervalue;
 
     public void Awake()
     {

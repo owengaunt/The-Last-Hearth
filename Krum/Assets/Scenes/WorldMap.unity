@@ -188,11 +188,11 @@ RectTransform:
   m_Father: {fileID: 1724566196}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 51.19995, y: 0}
-  m_SizeDelta: {x: -502.6895, y: 0.00024414062}
-  m_Pivot: {x: 0.49999994, y: 0.4999999}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 6.4, y: 300.94}
+  m_SizeDelta: {x: 310, y: 485.79822}
+  m_Pivot: {x: 0.49999994, y: 1}
 --- !u!114 &194475076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.70980394}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -245,11 +245,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryPrefab: {fileID: 7913643964762865519, guid: ccdad3b9cb2a8459b91872ddb14c0024, type: 3}
   inventory: {fileID: 11400000, guid: f67623fa3f9494c5f888b631e762e10b, type: 2}
-  X_START: -95
-  Y_START: 210
-  X_SPACE_BETWEEN_ITEMS: 95
+  X_START: -100
+  Y_START: -75
+  X_SPACE_BETWEEN_ITEMS: 100
   NUMBER_OF_COLUMN: 3
-  Y_SPACE_BETWEEN_ITEMS: 95
+  Y_SPACE_BETWEEN_ITEMS: 110
 --- !u!1 &219470170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,7 +1916,7 @@ MonoBehaviour:
   CharacterController: {fileID: 1353746123}
   gravity: -30
   jumpHeight: 1.5
-  walkspeed: 4
+  walkspeed: 5
   runspeed: 9
   crouchspeed: 3
   groundCheck: {fileID: 1680064856}
@@ -2844,7 +2844,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

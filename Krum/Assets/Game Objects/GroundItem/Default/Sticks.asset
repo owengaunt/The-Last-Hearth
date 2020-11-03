@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7590d384c0616479a937714f6f6d762e, type: 3}
   m_Name: Sticks
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6973602217194542576, guid: 3ddfdf6c426ec4029a4f3faefc3ab45c, type: 3}
+  Id: 0
+  uiDisplay: {fileID: 21300000, guid: 231257174ca4f406dad141a91a30eb8f, type: 3}
   type: 2
   description: For Making Small Structures or Building Fires
+  buffs: []

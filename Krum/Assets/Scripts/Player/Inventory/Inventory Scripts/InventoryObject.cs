@@ -16,17 +16,46 @@ public class InventoryObject : ScriptableObject
 
     public void AddItem(Item _item, int _amount)
     {
-        for (int i = 0; i < Container.Items.Count; i++)
+        if (_item.buffs.Length > 0)
         {
-            if(Container.Items[i].item == _item)
+            SetEmptySlot(_item, _amount);
+            return;
+        }
+
+        for (int i = 0; i < Container.Items.Length; i++)
+        {
+            if (Container.Items[i].ID == _item.Id)
             {
                 Container.Items[i].AddAmount(_amount);
                 return;
             }
-           
+
         }
-            Container.Items.Add(new InventorySlot(_item.Id, _item, _amount));
+
+        SetEmptySlot(_item, _amount);
+    }
+
+    public InventorySlot SetEmptySlot(Item _item, int _amount)
+    {
+        for (int i = 0; i < Container.Items.Length; i++)
+        {
+            if(Container.Items[i].ID <= -1)
+            {
+                Container.Items[i].UpdateSlot(_item.Id, _item, _amount);
+                return Container.Items[i];
+            }
         }
+
+        //set up functionalitly for full inventory
+        return null;
+    }
+
+    public void MoveItem(InventorySlot item1, InventorySlot item2)
+    {
+        InventorySlot temp = new InventorySlot(item2.ID, item2.item, item2.amount);
+        item2.UpdateSlot(item1.ID, item1.item, item1.amount);
+        item1.UpdateSlot(temp.ID, temp.item, temp.amount);
+    }
 
     [ContextMenu("Save")]
     public void Save()
@@ -69,16 +98,24 @@ public class InventoryObject : ScriptableObject
 
 [System.Serializable]
 public class Inventory
-{ 
-    public List<InventorySlot> Items = new List<InventorySlot>();
+{
+    public InventorySlot[] Items = new InventorySlot[12];
 }
 
-[System.Serializable]
-public class InventorySlot
-{
-    public int ID;
-    public Item item;
-    public int amount;
+    [System.Serializable]
+    public class InventorySlot
+    {
+        public int ID = -1;
+        public Item item;
+        public int amount;
+        public InventorySlot()
+        {
+            ID = -1;
+            item = null;
+            amount = 0;
+        }
+
+
     public InventorySlot(int _id, Item _item, int _amount)
     {
         ID = _id;
@@ -86,9 +123,17 @@ public class InventorySlot
         amount = _amount;
     }
 
-    public void AddAmount(int value)
+    public void UpdateSlot(int _id, Item _item, int _amount)
     {
-        amount += value;
+        ID = _id;
+        item = _item;
+        amount = _amount;
     }
 
-}
+
+
+    public void AddAmount(int value)
+        {
+            amount += value;
+        }
+    }
