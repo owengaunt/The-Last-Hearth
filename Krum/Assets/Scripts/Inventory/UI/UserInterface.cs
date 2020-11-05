@@ -16,7 +16,13 @@ public abstract class UserInterface : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < inventory.Container.Items.Length; i++)
+        {
+            inventory.Container.Items[i].parent = this;
+        }
         CreateSlots();
+        AddEvent(gameObject, EventTriggerType.PointerEnter, delegate { OnEnterInterface(gameObject); });
+        AddEvent(gameObject, EventTriggerType.PointerExit, delegate { OnExitInterface(gameObject); });
     }
 
     // Update is called once per frame
@@ -72,6 +78,16 @@ public abstract class UserInterface : MonoBehaviour
         playerInv.mouseItem.hoverItem = null;
     }
 
+    public void OnEnterInterface(GameObject obj)
+    {
+        playerInv.mouseItem.ui = obj.GetComponent<UserInterface>();
+    }
+
+    public void OnExitInterface(GameObject obj)
+    {
+        playerInv.mouseItem.ui = null;
+    }
+
     public void OnDragStart(GameObject obj)
     {
         var mouseObject = new GameObject();
@@ -91,17 +107,28 @@ public abstract class UserInterface : MonoBehaviour
 
     public void OnDragEnd(GameObject obj)
     {
-        if (playerInv.mouseItem.hoverObj)
-        {
-            inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[playerInv.mouseItem.hoverObj]);
-        }
-        else
-        {
-            inventory.RemoveItem(itemsDisplayed[obj].item);
-        }
+        var itemOnMouse = playerInv.mouseItem;
+        var mouseHoverItem = itemOnMouse.hoverItem;
+        var mouseHoverObj = itemOnMouse.hoverObj;
+        var GetItemObj = inventory.database.GetItem;
 
-        Destroy(playerInv.mouseItem.obj);
-        playerInv.mouseItem.item = null;
+
+        if(itemOnMouse.ui != null)
+        {
+            if (mouseHoverObj)
+            {
+                if (mouseHoverItem.CanPlaceInSlot(GetItemObj[itemsDisplayed[obj].ID]) && (mouseHoverItem.item.Id <= -1 || (mouseHoverItem.item.Id >= 0 && itemsDisplayed[obj].CanPlaceInSlot(GetItemObj[mouseHoverItem.item.Id]))))  
+                    inventory.MoveItem(itemsDisplayed[obj], mouseHoverItem.parent.itemsDisplayed[itemOnMouse.hoverObj]);                
+            }
+            else
+            {
+                //inventory.RemoveItem(itemsDisplayed[obj].item);
+            }
+        }
+        
+
+        Destroy(itemOnMouse.obj);
+        itemOnMouse.item = null;
     }
 
     public void OnDrag(GameObject obj)
@@ -114,6 +141,7 @@ public abstract class UserInterface : MonoBehaviour
 
 public class MouseItem
 {
+    public UserInterface ui;
     public GameObject obj;
     public InventorySlot item;
     public InventorySlot hoverItem;

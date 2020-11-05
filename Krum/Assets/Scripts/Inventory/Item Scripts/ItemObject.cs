@@ -5,7 +5,10 @@ using UnityEngine;
 public enum ItemType
 {
     Food,
-    Equipment,
+    Hat,
+    Balaclava,
+    SnowSuit,
+    Tools,
     Default
 }
 
@@ -16,7 +19,7 @@ public enum Attributes
     FrostResistence,
     Hunger,
     Thirst,
-    FoodPoison,
+    FoodPoison
 }
 
 public abstract class ItemObject : ScriptableObject
@@ -43,6 +46,12 @@ public class Item
     public string Name;
     public int Id;
     public ItemBuff[] buffs;
+
+    public Item()
+    {
+        Name = "";
+        Id = -1;
+    }
 
     public Item(ItemObject item)
     {
