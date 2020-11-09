@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerINV : MonoBehaviour
 {
-    public MouseItem mouseItem = new MouseItem();
 
     public InventoryObject inventory; 
 

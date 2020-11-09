@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02130cb40948746d9ad39bec61163506, type: 3}
   m_Name: Machete
   m_EditorClassIdentifier: 
-  Id: 4
   uiDisplay: {fileID: 0}
+  stackable: 0
   type: 4
   description: Good for swinging at things
-  buffs:
-  - attribute: 1
-    value: 0
-    min: 60
-    max: 70
+  data:
+    Name: 
+    Id: 10
+    buffs: []
