@@ -8,6 +8,9 @@ public class PlayerINV : MonoBehaviour
     public InventoryObject inventory;
     public InventoryObject equipment;
 
+
+    public Attribute[] attributes;
+
     public void OnTriggerEnter(Collider other)
     {
         var grounditem = other.GetComponent<GroundItem>();
@@ -36,11 +39,39 @@ public class PlayerINV : MonoBehaviour
     }
 
 
+    public void AttributeModified(Attribute attribute)
+    {
+        Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
+    }
+
 
     private void OnApplicationQuit()
     {
-        inventory.Container.Clear();
-        equipment.Container.Clear();
+        inventory.Clear();
+        equipment.Clear();
+    }
+
+}
+
+
+[System.Serializable]
+public class Attribute
+{
+    [System.NonSerialized]
+    public PlayerINV parent;
+    public Attributes type;
+    public ModifiableInt value;
+
+    public void SetParent(PlayerINV _parent)
+    {
+        parent = _parent;
+        value = new ModifiableInt(AttributeModified);
+    }
+
+
+    public void AttributeModified()
+    {
+        parent.AttributeModified(this); 
     }
 
 }

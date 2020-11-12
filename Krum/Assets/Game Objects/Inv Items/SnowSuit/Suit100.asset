@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02130cb40948746d9ad39bec61163506, type: 3}
   m_Name: Suit100
   m_EditorClassIdentifier: 
-  Id: 10
   uiDisplay: {fileID: 0}
+  stackable: 0
   type: 3
   description: You Could Sit in a Blizard and Not Blink
-  buffs:
-  - attribute: 2
-    value: 0
-    min: 95
-    max: 99
+  data:
+    Name: 
+    Id: 8
+    buffs:
+    - attribute: 2
+      value: 0
+      min: 45
+      max: 50

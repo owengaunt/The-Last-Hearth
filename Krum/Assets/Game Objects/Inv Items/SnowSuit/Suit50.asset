@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02130cb40948746d9ad39bec61163506, type: 3}
   m_Name: Suit50
   m_EditorClassIdentifier: 
-  Id: 8
   uiDisplay: {fileID: 0}
+  stackable: 0
   type: 3
   description: A Half Decent Snow Suit
-  buffs:
-  - attribute: 2
-    value: 0
-    min: 45
-    max: 50
+  data:
+    Name: 
+    Id: 6
+    buffs:
+    - attribute: 2
+      value: 0
+      min: 30
+      max: 35
