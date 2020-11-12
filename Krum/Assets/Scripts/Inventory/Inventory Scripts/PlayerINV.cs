@@ -5,15 +5,20 @@ using UnityEngine;
 public class PlayerINV : MonoBehaviour
 {
 
-    public InventoryObject inventory; 
+    public InventoryObject inventory;
+    public InventoryObject equipment;
 
     public void OnTriggerEnter(Collider other)
     {
-        var item = other.GetComponent<GroundItem>();
-        if (item)
+        var grounditem = other.GetComponent<GroundItem>();
+        if (grounditem)
         {
-            inventory.AddItem(new Item(item.item), 1);
-            Destroy(other.gameObject);
+            Item _item = new Item(grounditem.item);
+            if (inventory.AddItem(_item, 1))
+            {
+                Destroy(other.gameObject);
+            }
+
         }
     }
     private void Update()
@@ -21,10 +26,12 @@ public class PlayerINV : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Y))
         {
             inventory.Save();
+            equipment.Save();
         }
         if (Input.GetKeyDown(KeyCode.Return))
         {
             inventory.Load();
+            equipment.Load();
         }
     }
 
@@ -32,7 +39,8 @@ public class PlayerINV : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        inventory.Container.Items = new InventorySlot[12];
+        inventory.Container.Clear();
+        equipment.Container.Clear();
     }
 
 }

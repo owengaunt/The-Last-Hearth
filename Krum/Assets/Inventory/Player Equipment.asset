@@ -17,35 +17,30 @@ MonoBehaviour:
   Container:
     Items:
     - AllowedItems: 01000000
-      parent: {fileID: 0}
       item:
-        Name: Hat
-        Id: 4
+        Name: 
+        Id: -1
         buffs: []
-      amount: 1
+      amount: 0
     - AllowedItems: 04000000
-      parent: {fileID: 0}
       item:
-        Name: Axe
-        Id: 9
+        Name: 
+        Id: -1
         buffs: []
-      amount: 1
+      amount: 0
     - AllowedItems: 04000000
-      parent: {fileID: 0}
       item:
         Name: 
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 03000000
-      parent: {fileID: 0}
       item:
         Name: 
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 02000000
-      parent: {fileID: 0}
       item:
         Name: 
         Id: -1

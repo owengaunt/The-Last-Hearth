@@ -8,7 +8,6 @@ using UnityEngine.Events;
 
 public abstract class UserInterface : MonoBehaviour
 {
-    public PlayerINV playerInv;
 
     public InventoryObject inventory;
     public Dictionary<GameObject, InventorySlot> slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
@@ -28,29 +27,11 @@ public abstract class UserInterface : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateSlots();
+        slotsOnInterface.UpdateSlotDisplay();
     }
 
     public abstract void CreateSlots();
 
-    public void UpdateSlots()
-    {
-        foreach (KeyValuePair<GameObject, InventorySlot> _slot in slotsOnInterface)
-        {
-            if (_slot.Value.item.Id >= 0)
-            {
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.Value.ItemObject.uiDisplay;
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
-                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
-            }
-            else
-            {
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
-                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
-            }
-        }
-    }
 
     protected void AddEvent(GameObject obj, EventTriggerType type, UnityAction<BaseEventData> action)
     {
@@ -85,18 +66,25 @@ public abstract class UserInterface : MonoBehaviour
 
     public void OnDragStart(GameObject obj)
     {
-        if (slotsOnInterface[obj].item.Id <= -1)
-            return;
+        MouseData.tempItemBeingDragged = CreateTempItem(obj);
+    }
 
-        var mouseObject = new GameObject();
-        var rt = mouseObject.AddComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(50, 50);
-        mouseObject.transform.SetParent(transform.parent);
-        var img = mouseObject.AddComponent<Image>();
-        img.sprite = slotsOnInterface[obj].ItemObject.uiDisplay;
-        img.raycastTarget = false;
+    public GameObject CreateTempItem(GameObject obj)
+    {
+        GameObject tempItem = null;
+        if(slotsOnInterface[obj].item.Id >= 0)
+        {
+            tempItem = new GameObject();
+            var mouseObject = new GameObject();
+            var rt = tempItem.AddComponent<RectTransform>();
+            rt.sizeDelta = new Vector2(50, 50);
+            tempItem.transform.SetParent(transform.parent);
+            var img = tempItem.AddComponent<Image>();
+            img.sprite = slotsOnInterface[obj].ItemObject.uiDisplay;
+            img.raycastTarget = false;
+        }
 
-        MouseData.tempItemBeingDragged = mouseObject;
+        return tempItem;
     }
 
     public void OnDragEnd(GameObject obj)
@@ -133,4 +121,27 @@ public static class MouseData
     public static GameObject tempItemBeingDragged;
     public static GameObject slotHoveredOver;
 
+}
+
+
+public static class ExtensionMethods
+{
+    public static void UpdateSlotDisplay(this Dictionary<GameObject, InventorySlot> _slotsOnInterface)
+    {
+        foreach (KeyValuePair<GameObject, InventorySlot> _slot in _slotsOnInterface)
+        {
+            if (_slot.Value.item.Id >= 0)
+            {
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.Value.ItemObject.uiDisplay;
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
+            }
+            else
+            {
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            }
+        }
+    }
 }

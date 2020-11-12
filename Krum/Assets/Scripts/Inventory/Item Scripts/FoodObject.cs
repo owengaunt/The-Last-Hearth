@@ -8,7 +8,6 @@ public class FoodObject : ItemObject
 
     public void Awake()
     {
-        type = ItemType.Food;
     }
 
 }
