@@ -6,8 +6,8 @@ public enum ItemType
 {
     Food,
     Hat,
-    Balaclava,
-    SnowSuit,
+    SnowPants,
+    Jacket,
     Tools,
     Default
 }
