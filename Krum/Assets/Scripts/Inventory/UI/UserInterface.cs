@@ -93,7 +93,6 @@ public abstract class UserInterface : MonoBehaviour
         if(slotsOnInterface[obj].item.Id >= 0)
         {
             tempItem = new GameObject();
-            var mouseObject = new GameObject();
             var rt = tempItem.AddComponent<RectTransform>();
             rt.sizeDelta = new Vector2(50, 50);
             tempItem.transform.SetParent(transform.parent);
@@ -109,6 +108,7 @@ public abstract class UserInterface : MonoBehaviour
     {
 
         Destroy(MouseData.tempItemBeingDragged);
+
         if(MouseData.interfaceMouseIsOver == null)
         {
             slotsOnInterface[obj].RemoveItem();
@@ -118,9 +118,7 @@ public abstract class UserInterface : MonoBehaviour
         {
             InventorySlot mouseHoverSlotData = MouseData.interfaceMouseIsOver.slotsOnInterface[MouseData.slotHoveredOver];
             inventory.SwapItems(slotsOnInterface[obj], mouseHoverSlotData);
-        }
-
-      
+        } 
          
 
     }
