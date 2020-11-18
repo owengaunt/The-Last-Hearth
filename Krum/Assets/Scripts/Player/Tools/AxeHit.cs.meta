@@ -3,7 +3,10 @@ guid: 911f495c8585aea4ca3ac092d7383079
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - fpscam: {instanceID: 0}
+  - impactEffect: {fileID: 100002, guid: ac1aa04288fad804ba1cd769f4377aaf, type: 3}
+  - axeWood: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
