@@ -49,7 +49,8 @@ public class MouseLook : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 inventoryIsClosed = false;
                 looking = true;
-                axeCam.cullingMask = (1 << LayerMask.NameToLayer("Axe"));
+                axeCam.cullingMask = (1 << LayerMask.NameToLayer("Player"));
+
             }
             else
             {
