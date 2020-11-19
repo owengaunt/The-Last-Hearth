@@ -9,12 +9,13 @@ public class FpsMovement : MonoBehaviour
 
     public float gravity = -30f;
     public float jumpHeight = 2.5f;
-
+    
 
     private float speed;
     public float walkspeed;
     public float runspeed;
     public float crouchspeed;
+    public Animator anim;
 
     public Transform groundCheck;
     CapsuleCollider theCollider;
@@ -40,6 +41,12 @@ public class FpsMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(Input.GetKeyDown(KeyCode.W) || (KeyCode.A) || (KeyCode.S) || (KeyCode.D) || )
+        {
+            anim.SetFloat("Speed", walkspeed);
+        }
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)
@@ -80,7 +87,7 @@ public class FpsMovement : MonoBehaviour
         if (Input.GetKeyUp(characterinput.sprintkey))
         {
             speed = walkspeed;
-           
+
         }
 
        
