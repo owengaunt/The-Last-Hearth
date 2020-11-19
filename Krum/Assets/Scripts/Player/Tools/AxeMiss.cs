@@ -14,7 +14,7 @@ public class AxeMiss : MonoBehaviour
 {
         if (Input.GetMouseButtonDown(0))
         {
-            anim.SetTrigger("Active");
+            //anim.SetTrigger("Active");
         }
 
 }

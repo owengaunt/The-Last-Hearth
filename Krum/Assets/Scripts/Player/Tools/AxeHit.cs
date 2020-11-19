@@ -40,7 +40,7 @@ public class AxeHit : MonoBehaviour
 
     public void Hit()
     {
-        anim.SetTrigger("Active");
+        //anim.SetTrigger("Active");
         StartCoroutine(Swing());
     }
     
