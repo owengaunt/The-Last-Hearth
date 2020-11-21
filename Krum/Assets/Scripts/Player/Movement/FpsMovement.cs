@@ -42,10 +42,10 @@ public class FpsMovement : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.W) || (KeyCode.A) || (KeyCode.S) || (KeyCode.D) || )
-        {
-            anim.SetFloat("Speed", walkspeed);
-        }
+        //if (Input.GetKeyDown(KeyCode.W) || (KeyCode.A) || (KeyCode.S) || (KeyCode.D) || )
+        //{
+        //    anim.SetFloat("Speed", walkspeed);
+        //}
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
