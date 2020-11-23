@@ -9,9 +9,9 @@ public class FpsMovement : MonoBehaviour
 
     public float gravity = -30f;
     public float jumpHeight = 2.5f;
-    
 
-    private float speed;
+
+    public float speed;
     public float walkspeed;
     public float runspeed;
     public float crouchspeed;
@@ -23,10 +23,11 @@ public class FpsMovement : MonoBehaviour
     public float groundDistance = 0.9f;
     public LayerMask groundMask;
 
-    Vector3 velocity;
+    public Vector3 velocity;
 
     bool isCrouched;
     bool isGrounded;
+
 
     //Start of thing
     void Start()
@@ -42,10 +43,14 @@ public class FpsMovement : MonoBehaviour
     void Update()
     {
 
-        //if (Input.GetKeyDown(KeyCode.W) || (KeyCode.A) || (KeyCode.S) || (KeyCode.D) || )
-        //{
-        //    anim.SetFloat("Speed", walkspeed);
-        //}
+        if(Input.GetKey(characterinput.walkkey))
+        {
+            anim.SetBool("isWalking", true);
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
+        }
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
