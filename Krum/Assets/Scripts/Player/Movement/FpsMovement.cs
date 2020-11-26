@@ -43,6 +43,8 @@ public class FpsMovement : MonoBehaviour
     void Update()
     {
 
+        //walking animations
+        //forward
         if(Input.GetKey(characterinput.walkkey))
         {
             anim.SetBool("isWalking", true);
@@ -52,6 +54,37 @@ public class FpsMovement : MonoBehaviour
             anim.SetBool("isWalking", false);
         }
 
+        //backwards
+        if (Input.GetKey(characterinput.backwalkkey))
+        {
+            anim.SetBool("isBWalking", true);
+        }
+        else
+        {
+            anim.SetBool("isBWalking", false);
+        }
+
+        //left
+        if (Input.GetKey(characterinput.leftwalkkey))
+        {
+            anim.SetBool("isLWalking", true);
+        }
+        else
+        {
+            anim.SetBool("isLWalking", false);
+        }
+
+        //right
+        if (Input.GetKey(characterinput.rightwalkkey))
+        {
+            anim.SetBool("isRWalking", true);
+        }
+        else
+        {
+            anim.SetBool("isRWalking", false);
+        }
+
+        //movement/jump
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)

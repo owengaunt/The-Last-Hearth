@@ -9,12 +9,18 @@ using UnityEngine.Events;
 public abstract class UserInterface : MonoBehaviour
 {
 
+    public bool inventoryEnabled;
+
+    public CanvasGroup visualInventory;
+
     public InventoryObject inventory;
     public Dictionary<GameObject, InventorySlot> slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
 
     // Start is called before the first frame update
     void Start()
     {
+        visualInventory.alpha = 0f;
+
         for (int i = 0; i < inventory.Container.Slots.Length; i++)
         {
             inventory.Container.Slots[i].parent = this;
@@ -25,6 +31,26 @@ public abstract class UserInterface : MonoBehaviour
         AddEvent(gameObject, EventTriggerType.PointerEnter, delegate { OnEnterInterface(gameObject); });
         AddEvent(gameObject, EventTriggerType.PointerExit, delegate { OnExitInterface(gameObject); });
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            inventoryEnabled = !inventoryEnabled;
+
+            if (inventoryEnabled == true)
+            {
+                visualInventory.alpha = 1f;
+                visualInventory.blocksRaycasts = true;
+            }
+            else
+            {
+                visualInventory.alpha = 0f;
+                visualInventory.blocksRaycasts = false;
+            }
+        }
+    }
+
 
     private void OnSlotUpdate(InventorySlot _slot)
     {
