@@ -1784,8 +1784,8 @@ GameObject:
   - component: {fileID: 409579696}
   - component: {fileID: 409579698}
   - component: {fileID: 409579697}
-  m_Layer: 9
-  m_Name: AxePlayerCam
+  m_Layer: 10
+  m_Name: ToolPlayerCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3868,15 +3868,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7422788233372283023, guid: c035df65f15524ed48a0a8b2b3d7e446, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.788147e-10
+      value: -0.00000033489778
       objectReference: {fileID: 0}
     - target: {fileID: 7422788233372283023, guid: c035df65f15524ed48a0a8b2b3d7e446, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.004560645
+      value: 0.004561018
       objectReference: {fileID: 0}
     - target: {fileID: 7422788233372283023, guid: c035df65f15524ed48a0a8b2b3d7e446, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.7241143e-12
+      value: 0.00000035762787
       objectReference: {fileID: 0}
     - target: {fileID: 7422788233372283023, guid: c035df65f15524ed48a0a8b2b3d7e446, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6557,7 +6557,7 @@ MonoBehaviour:
   jumpHeight: 1.5
   speed: 0
   walkspeed: 6.4
-  runspeed: 50
+  runspeed: 9
   crouchspeed: 3
   anim: {fileID: 2041033136}
   groundCheck: {fileID: 1680064856}
