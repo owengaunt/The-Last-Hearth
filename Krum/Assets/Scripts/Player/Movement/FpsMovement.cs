@@ -27,6 +27,11 @@ public class FpsMovement : MonoBehaviour
 
     bool isCrouched;
     bool isGrounded;
+    bool isWalking = false;
+    bool isBWDWalking = false;
+    bool isLeftWalking = false;
+    bool isRightWalking = false;
+    bool isSprinting = false;
 
 
     //Start of thing
@@ -42,49 +47,6 @@ public class FpsMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //walking animations
-        //forward
-        if(Input.GetKey(characterinput.walkkey))
-        {
-            anim.SetBool("isWalking", true);
-        }
-        else
-        {
-            anim.SetBool("isWalking", false);
-        }
-
-        //backwards
-        if (Input.GetKey(characterinput.backwalkkey))
-        {
-            anim.SetBool("isBWalking", true);
-        }
-        else
-        {
-            anim.SetBool("isBWalking", false);
-        }
-
-        //left
-        if (Input.GetKey(characterinput.leftwalkkey))
-        {
-            anim.SetBool("isLWalking", true);
-        }
-        else
-        {
-            anim.SetBool("isLWalking", false);
-        }
-
-        //right
-        if (Input.GetKey(characterinput.rightwalkkey))
-        {
-            anim.SetBool("isRWalking", true);
-        }
-        else
-        {
-            anim.SetBool("isRWalking", false);
-        }
-
-        //movement/jump
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)
@@ -128,8 +90,131 @@ public class FpsMovement : MonoBehaviour
 
         }
 
-       
+        //walking animations
+        //forward
+        if (Input.GetKey(characterinput.walkkey) && !isRightWalking && !isLeftWalking && !isCrouched && !isSprinting && isGrounded)
+        {
+            anim.SetBool("isWalking", true);
+            isWalking = true;
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
+            isWalking = false;
+        }
 
+        //backwards
+        if (Input.GetKey(characterinput.backwalkkey) && !isRightWalking && !isLeftWalking && !isCrouched && !isSprinting && isGrounded)
+        {
+            anim.SetBool("isBWalking", true);
+            isBWDWalking = true;
+
+        }
+        else
+        {
+            anim.SetBool("isBWalking", false);
+            isBWDWalking = false;
+        }
+
+        //left
+        if (Input.GetKey(characterinput.leftwalkkey) && !isWalking && !isBWDWalking && !isCrouched && !isSprinting && isGrounded)
+        {
+            anim.SetBool("isLWalking", true);
+            isLeftWalking = true;
+        }
+        else
+        {
+            anim.SetBool("isLWalking", false);
+            isLeftWalking = false;
+        }
+
+        //right
+        if (Input.GetKey(characterinput.rightwalkkey) && !isWalking && !isBWDWalking && !isCrouched && !isSprinting && isGrounded)
+        {
+            anim.SetBool("isRWalking", true);
+            isRightWalking = true;
+        }
+        else
+        {
+            anim.SetBool("isRWalking", false);
+            isRightWalking = false;
+        }
+
+        //diagonal front left
+        if (Input.GetKey(characterinput.leftwalkkey) && Input.GetKey(characterinput.walkkey) && !isCrouched && !isSprinting && isGrounded)
+        {
+            anim.SetBool("isDFLWalking", true);
+            anim.SetBool("isLWalking", false);
+            anim.SetBool("isWalking", false);
+
+        }
+        else
+        {
+            anim.SetBool("isDFLWalking", false);
+        }
+
+
+        //diagonal front right
+        if (Input.GetKey(characterinput.rightwalkkey) && Input.GetKey(characterinput.walkkey) && !isCrouched && !isSprinting && isGrounded)
+        {
+            anim.SetBool("isDFRWalking", true);
+            anim.SetBool("isRWalking", false);
+            anim.SetBool("isWalking", false);
+        }
+        else
+        {
+            anim.SetBool("isDFRWalking", false);
+        }
+
+        //diagonal back left
+        if (Input.GetKey(characterinput.leftwalkkey) && Input.GetKey(characterinput.backwalkkey) && !isCrouched && !isSprinting && isGrounded)
+        {
+            anim.SetBool("isDBLWalking", true);
+            anim.SetBool("isLWalking", false);
+            anim.SetBool("isBWalking", false);
+        }
+        else
+        {
+            anim.SetBool("isDBLWalking", false);
+        }
+
+        //diagonal back right
+        if (Input.GetKey(characterinput.rightwalkkey) && Input.GetKey(characterinput.backwalkkey) && !isCrouched && !isSprinting && isGrounded)
+        {
+            anim.SetBool("isDBRWalking", true);
+            anim.SetBool("isRWalking", false);
+            anim.SetBool("isBWalking", false);
+        }
+        else
+        {
+            anim.SetBool("isDBRWalking", false);
+        }
+
+        //extra movement animations
+        //jumping
+        if (isGrounded == false)
+        {
+            anim.SetBool("isJumping", true);
+        }
+        else
+        {
+            anim.SetBool("isJumping", false);
+        }
+
+        //crouchidle
+        if( isCrouched == true)
+        {
+            anim.SetBool("isCrouching", true);
+        }
+        else
+        {
+            anim.SetBool("isCrouching", false);
+        }
+        //movement/jump
+        
+
+
+        
     }
         void DoCrouch()
     {
