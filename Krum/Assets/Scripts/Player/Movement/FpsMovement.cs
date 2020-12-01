@@ -267,8 +267,40 @@ public class FpsMovement : MonoBehaviour
             anim.SetBool("isCrouchBWD", false);
         }
 
+        //crouch left
+        if ((isCrouched == true) && Input.GetKey(characterinput.leftwalkkey) && !isWalking && !isBWDWalking && !isSprinting)
+        {
+            anim.SetBool("isCrouchL", true);
+            anim.SetBool("isCrouching", false);
+            anim.SetBool("isDFLWalking", false);
+            anim.SetBool("isLWalking", false);
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isDBRWalking", false);
+            anim.SetBool("isRWalking", false);
+            anim.SetBool("isBWalking", false);
+        }
+        else
+        {
+            anim.SetBool("isCrouchL", false);
+        }
 
 
+        //crouch right
+        if ((isCrouched == true) && Input.GetKey(characterinput.rightwalkkey) && !isWalking && !isBWDWalking && !isSprinting)
+        {
+            anim.SetBool("isCrouchL", true);
+            anim.SetBool("isCrouching", false);
+            anim.SetBool("isDFLWalking", false);
+            anim.SetBool("isLWalking", false);
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isDBRWalking", false);
+            anim.SetBool("isRWalking", false);
+            anim.SetBool("isBWalking", false);
+        }
+        else
+        {
+            anim.SetBool("isCrouchR", false);
+        }
 
 
     }
