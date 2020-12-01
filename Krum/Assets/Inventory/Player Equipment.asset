@@ -25,11 +25,11 @@ MonoBehaviour:
       amount: 0
     - AllowedItems: 04000000
       item:
-        Name: Axe
-        Id: 9
+        Name: 
+        Id: -1
         buffs: []
-      amount: 1
-    - AllowedItems: 04000000
+      amount: 0
+    - AllowedItems: 00000000
       item:
         Name: 
         Id: -1
