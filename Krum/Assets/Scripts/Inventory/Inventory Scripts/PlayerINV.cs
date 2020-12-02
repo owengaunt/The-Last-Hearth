@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,32 +11,20 @@ public class PlayerINV : MonoBehaviour
 
     public Attribute[] attributes;
 
-    public Transform food;
-    public Transform hat;
-    public Transform tools;
-    public Transform snowpants;
-    public Transform jacket;
-
-    private BoneCombiner boneCombiner;
-
-
-
     private void Start()
     {
-        boneCombiner = new BoneCombiner(gameObject);
-
         for (int i = 0; i < attributes.Length; i++)
         {
             attributes[i].SetParent(this);
         }
         for (int i = 0; i < equipment.GetSlots.Length; i++)
         {
-            equipment.GetSlots[i].OnBeforeUpdate += OnRemoveItem;
-            equipment.GetSlots[i].OnAfterUpdate += OnAddItem;
+            equipment.GetSlots[i].OnBeforeUpdate += OnBeforeSlotUpdate;
+            equipment.GetSlots[i].OnAfterUpdate += OnAfterSlotUpdate;
         }
     }
 
-    public void OnRemoveItem(InventorySlot _slot)
+    public void OnBeforeSlotUpdate(InventorySlot _slot)
     {
         if (_slot.ItemObject == null)
         {
@@ -69,7 +56,7 @@ public class PlayerINV : MonoBehaviour
     }
 
 
-    public void OnAddItem(InventorySlot _slot)
+    public void OnAfterSlotUpdate(InventorySlot _slot)
     {
         if (_slot.ItemObject == null)
         {
@@ -92,33 +79,6 @@ public class PlayerINV : MonoBehaviour
                         }
                     }
                 }
-
-                if(_slot.ItemObject.characterDisplay != null)
-                {
-                    switch (_slot.AllowedItems[0])
-                    {
-                        case ItemType.Food:
-                            food = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay, _slot.ItemObject.boneNames);
-                            break;
-                        case ItemType.Hat:
-                            hat = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay, _slot.ItemObject.boneNames);
-                            break;
-                        case ItemType.Tools:
-                            tools = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay, _slot.ItemObject.boneNames);
-                            break;
-                        case ItemType.SnowPants:
-                            snowpants = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay, _slot.ItemObject.boneNames);
-                            break;
-                        case ItemType.Jacket:
-                            jacket = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay, _slot.ItemObject.boneNames);
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-
-                    }
-                }
-
-
 
                 break;
             case InterfaceType.Storage:

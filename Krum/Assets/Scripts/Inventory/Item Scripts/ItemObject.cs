@@ -25,14 +25,11 @@ public enum Attributes
 public abstract class ItemObject : ScriptableObject
 {
     public Sprite uiDisplay;
-    public GameObject characterDisplay;
     public bool stackable;
     public ItemType type;
     [TextArea(15, 20)]
     public string description;
     public Item data = new Item();
-
-    public List<string> bonesNames = new List<string>();
 
 
     public Item CreateItem()
@@ -40,24 +37,6 @@ public abstract class ItemObject : ScriptableObject
         Item newItem = new Item(this);
         return newItem;
     }
-
-    private void OnValidate()
-    {
-        bonesNames.Clear();
-        if (characterDisplay == null)
-            return;
-        if (!characterDisplay.GetComponent<SkinnedMeshRenderer>())
-            return;
-
-        var renderer = characterDisplay.GetComponent<SkinnedMeshRenderer>();
-        var bones = renderer.bones;
-
-        foreach (var t in bones)
-        {
-            bonesNames.Add(t.name);
-        }
-    }
-
 
 }
 
