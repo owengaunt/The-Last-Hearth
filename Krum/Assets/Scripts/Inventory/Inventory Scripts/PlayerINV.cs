@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,20 +12,30 @@ public class PlayerINV : MonoBehaviour
 
     public Attribute[] attributes;
 
+    private Transform _default;
+    private Transform _tools;
+    private Transform _hat;
+    private Transform _snowpants;
+    private Transform _jacket
+
+    private BoneCombiner boneCombiner;
+
     private void Start()
     {
+        boneCombiner = new BoneCombiner(gameObject)
+
         for (int i = 0; i < attributes.Length; i++)
         {
             attributes[i].SetParent(this);
         }
         for (int i = 0; i < equipment.GetSlots.Length; i++)
         {
-            equipment.GetSlots[i].OnBeforeUpdate += OnBeforeSlotUpdate;
-            equipment.GetSlots[i].OnAfterUpdate += OnAfterSlotUpdate;
+            equipment.GetSlots[i].OnBeforeUpdate += OnRemoveItem;
+            equipment.GetSlots[i].OnAfterUpdate += OnAddItem;
         }
     }
 
-    public void OnBeforeSlotUpdate(InventorySlot _slot)
+    public void OnRemoveItem(InventorySlot _slot)
     {
         if (_slot.ItemObject == null)
         {
@@ -56,7 +67,7 @@ public class PlayerINV : MonoBehaviour
     }
 
 
-    public void OnAfterSlotUpdate(InventorySlot _slot)
+    public void OnAddItem(InventorySlot _slot)
     {
         if (_slot.ItemObject == null)
         {
@@ -67,7 +78,7 @@ public class PlayerINV : MonoBehaviour
             case InterfaceType.Inventory:
                 break;
             case InterfaceType.Equipment:
-                print(string.Concat("Placed ", _slot.ItemObject, " on ", _slot.parent.inventory.type, ", Allowed Items: ", string.Join(", ", _slot.AllowedItems)));
+                print($"Placed { _slot.ItemObject} on { _slot.parent.inventory.type }, Allowed Items: { string.Join(", ", _slot.AllowedItems)}");
 
                 for (int i = 0; i < _slot.item.buffs.Length; i++)
                 {
@@ -79,6 +90,29 @@ public class PlayerINV : MonoBehaviour
                         }
                     }
                 }
+
+                if(_slot.ItemObject.characterDisplay != null)
+                {
+                    switch (_slot.AllowedItems[0])
+                    {
+                        case ItemType.Default
+                            _default = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay);
+                            break;
+                        case ItemType.Tools:
+                            break;
+                        case ItemType.Hat:
+                            break;
+                        case ItemType.SnowPants:
+                            break;
+                        case ItemType.Jacket:
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+
+
+                    }
+                }
+
 
                 break;
             case InterfaceType.Storage:

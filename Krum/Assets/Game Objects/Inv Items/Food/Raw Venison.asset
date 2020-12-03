@@ -13,18 +13,11 @@ MonoBehaviour:
   m_Name: Raw Venison
   m_EditorClassIdentifier: Assembly-CSharp::NewBehaviourScript
   uiDisplay: {fileID: 21300000, guid: 55d624aed1cdb4f77ac7b9bbb6f523f2, type: 3}
+  characterDisplay: {fileID: 0}
   stackable: 1
   type: 0
   description: The Meat That Comes From Killing A Deer And Is Not Yet Cooked
   data:
     Name: 
     Id: 3
-    buffs:
-    - attribute: 3
-      value: 0
-      min: 40
-      max: 60
-    - attribute: 5
-      value: 0
-      min: 20
-      max: 80
+    buffs: []

@@ -13,14 +13,11 @@ MonoBehaviour:
   m_Name: Cooked Venison
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 0}
+  characterDisplay: {fileID: 0}
   stackable: 1
   type: 0
   description: A Hearty Meal for a Lone Survivor
   data:
     Name: 
     Id: 2
-    buffs:
-    - attribute: 3
-      value: 0
-      min: 80
-      max: 60
+    buffs: []

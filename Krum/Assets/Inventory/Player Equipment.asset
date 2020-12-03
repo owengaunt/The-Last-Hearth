@@ -23,12 +23,12 @@ MonoBehaviour:
         Id: -1
         buffs: []
       amount: 0
-    - AllowedItems: 04000000
+    - AllowedItems: 0500000005000000050000000500000005000000
       item:
-        Name: Axe
-        Id: 9
+        Name: 
+        Id: -1
         buffs: []
-      amount: 1
+      amount: 0
     - AllowedItems: 04000000
       item:
         Name: 
