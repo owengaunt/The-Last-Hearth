@@ -19,7 +19,7 @@ public class BoneCombiner
 
     public Transform AddLimb(GameObject bonedObj)
     {
-        Transform limb = ProcessBonedObject(bonedObj.GetComponentInChildren<SkinnedMeshRenderer>())
+        Transform limb = ProcessBonedObject(bonedObj.GetComponentInChildren<SkinnedMeshRenderer>());
         limb.SetParent(_transform);
         return limb; 
     }
@@ -33,12 +33,12 @@ public class BoneCombiner
         var bones = renderer.bones;
         for (int i = 0; i < bones.Length; i++)
         {
-            _boneTransforms[i] = _RootBoneDictionary[bones[i].GetHashCode()];
+            _boneTransforms[i] = _RootBoneDictionary[bones[i].name.GetHashCode()];
         }
 
         meshRenderer.bones = _boneTransforms;
         meshRenderer.sharedMesh = renderer.sharedMesh;
-        meshRenderer.sharedmarerials = renderer.sharedmaterials;
+        meshRenderer.materials = renderer.sharedMaterials;
 
         return bonedObject;
     }
@@ -47,7 +47,7 @@ public class BoneCombiner
     {
         foreach (Transform child in transform)
         {
-            _RootBoneDictionary.Add(child.name.GetHashCode(, child));
+            _RootBoneDictionary.Add(child.name.GetHashCode(), child);
             TraverseHierarchy(child);
         }
     }
