@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class AxeHit : MonoBehaviour
 {
     Animator anim;
-    public Camera fpscam;
+    public Camera axeCam ;
     public GameObject impactEffect;
 
     public bool AxeTrue = true;
@@ -40,7 +40,6 @@ public class AxeHit : MonoBehaviour
 
     public void Hit()
     {
-        //anim.SetTrigger("Active");
         StartCoroutine(Swing());
     }
     
@@ -54,7 +53,7 @@ public class AxeHit : MonoBehaviour
             yield return new WaitForSeconds(1.4f);
 
                 RaycastHit hit;
-                if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
+                if (Physics.Raycast(axeCam.transform.position, axeCam.transform.forward, out hit, range))
                 {
 
                     UnityEngine.Debug.Log(hit.transform.name);
@@ -69,7 +68,7 @@ public class AxeHit : MonoBehaviour
 
                         Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
 
-                    axeWood.Play();
+                    //axeWood.Play();
                     }
 
                 }

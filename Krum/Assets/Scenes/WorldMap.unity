@@ -1033,7 +1033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e85e522c67c984d6f879942abede48d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 53ee1a22d4bc543c48a7bae65af66c6d, type: 2}
+  item: {fileID: 11400000, guid: 538c6383350d54dfa93cddbac2079d04, type: 2}
 --- !u!65 &223967227
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1786,6 +1786,7 @@ GameObject:
   - component: {fileID: 409579696}
   - component: {fileID: 409579698}
   - component: {fileID: 409579697}
+  - component: {fileID: 409579699}
   m_Layer: 10
   m_Name: ToolPlayerCam
   m_TagString: Untagged
@@ -1801,7 +1802,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409579695}
   m_LocalRotation: {x: 0.0008703668, y: 0.014360097, z: 0.01170804, w: 0.999828}
-  m_LocalPosition: {x: -0.2, y: 18.23, z: 3.35}
+  m_LocalPosition: {x: -0.25, y: 18.23, z: 2.15}
   m_LocalScale: {x: 6.796516, y: 6.793817, z: 8.628468}
   m_Children: []
   m_Father: {fileID: 206639183}
@@ -1821,7 +1822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axeCam: {fileID: 409579698}
   inventoryIsClosed: 0
-  looking: 0
+  looking: 1
   mouseSensitivity: 150
   playerbody: {fileID: 1353746124}
 --- !u!20 &409579698
@@ -1855,7 +1856,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 1024
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1867,6 +1868,26 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &409579699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409579695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 911f495c8585aea4ca3ac092d7383079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axeCam: {fileID: 409579698}
+  impactEffect: {fileID: 100002, guid: ac1aa04288fad804ba1cd769f4377aaf, type: 3}
+  AxeTrue: 1
+  HitReady: 0
+  range: 1.75
+  Damage: 10
+  swingRate: 1
+  axeWood: {fileID: 0}
 --- !u!4 &470311972 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8333263119423186486, guid: c035df65f15524ed48a0a8b2b3d7e446, type: 3}
@@ -2142,15 +2163,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c035df65f15524ed48a0a8b2b3d7e446, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.06
+      value: -0.060058594
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c035df65f15524ed48a0a8b2b3d7e446, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.29
+      value: -1.4200001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c035df65f15524ed48a0a8b2b3d7e446, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.33
+      value: -0.0780439
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c035df65f15524ed48a0a8b2b3d7e446, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2186,15 +2207,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c035df65f15524ed48a0a8b2b3d7e446, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.15
+      value: 0.15003495
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c035df65f15524ed48a0a8b2b3d7e446, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15
+      value: 0.15000008
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c035df65f15524ed48a0a8b2b3d7e446, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.15
+      value: 0.19275983
       objectReference: {fileID: 0}
     - target: {fileID: -8625725644046755650, guid: c035df65f15524ed48a0a8b2b3d7e446, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6561,7 +6582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e85e522c67c984d6f879942abede48d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 9b0bba4e7538b47d98e655bbc2569ddb, type: 2}
+  item: {fileID: 11400000, guid: 4673ff036194f441a847e170e8dd433a, type: 2}
 --- !u!65 &1309287723
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6875,7 +6896,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 3
   m_Radius: 0.8
-  m_SlopeLimit: 35
+  m_SlopeLimit: 10
   m_StepOffset: 0.2
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -6888,8 +6909,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353746119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1099.7, y: 31.24, z: -2319.2}
-  m_LocalScale: {x: 1, y: 1, z: 1.2705567}
+  m_LocalPosition: {x: 1099.7, y: 31.736, z: -2319.542}
+  m_LocalScale: {x: 1.16, y: 1.16, z: 1.1466902}
   m_Children:
   - {fileID: 1680064856}
   - {fileID: 206639183}
@@ -10735,6 +10756,7 @@ GameObject:
   - component: {fileID: 2079397125}
   - component: {fileID: 2079397124}
   - component: {fileID: 2079397123}
+  - component: {fileID: 2079397126}
   m_Layer: 0
   m_Name: MainCam
   m_TagString: Player
@@ -10750,7 +10772,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079397121}
   m_LocalRotation: {x: 0.0008703668, y: 0.014360097, z: 0.01170804, w: 0.999828}
-  m_LocalPosition: {x: -0.18, y: 18.3, z: 3.35}
+  m_LocalPosition: {x: -0.23, y: 18.3, z: 2.15}
   m_LocalScale: {x: 4.2378926, y: 6.793817, z: 9.719133}
   m_Children:
   - {fileID: 496783908}
@@ -10806,7 +10828,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.4
+  near clip plane: 0.225
   far clip plane: 10000
   field of view: 79
   orthographic: 0
@@ -10826,6 +10848,26 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &2079397126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079397121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 911f495c8585aea4ca3ac092d7383079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axeCam: {fileID: 409579698}
+  impactEffect: {fileID: 100002, guid: ac1aa04288fad804ba1cd769f4377aaf, type: 3}
+  AxeTrue: 1
+  HitReady: 0
+  range: 1.5
+  Damage: 10
+  swingRate: 1
+  axeWood: {fileID: 0}
 --- !u!4 &2112334232 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5113036025768419635, guid: c035df65f15524ed48a0a8b2b3d7e446, type: 3}
