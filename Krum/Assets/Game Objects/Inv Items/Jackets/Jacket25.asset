@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Jacket25
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 0}
-  characterDisplay: {fileID: 0}
+  characterDisplay: {fileID: -350465322348047516, guid: 23876383741afb14196096002e255bbd, type: 3}
   stackable: 0
   type: 3
   description: 'A Falling Apart Snow Suit '
