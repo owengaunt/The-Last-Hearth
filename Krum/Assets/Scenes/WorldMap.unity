@@ -965,10 +965,10 @@ Transform:
   - {fileID: 2003252389}
   - {fileID: 1193432512}
   - {fileID: 707139759}
+  - {fileID: 1606524669}
   - {fileID: 1402063116}
   - {fileID: 1010462172}
   - {fileID: 1960516072}
-  - {fileID: 1606524669}
   - {fileID: 1297511765}
   - {fileID: 1433073200}
   - {fileID: 1504664488}
@@ -5448,7 +5448,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 219470173}
-  m_RootOrder: 51
+  m_RootOrder: 52
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!154 &1010462173
 TerrainCollider:
@@ -7084,7 +7084,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 219470173}
-  m_RootOrder: 50
+  m_RootOrder: 51
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!154 &1402063117
 TerrainCollider:
@@ -7910,7 +7910,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 219470173}
-  m_RootOrder: 53
+  m_RootOrder: 50
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!154 &1606524670
 TerrainCollider:
@@ -10193,7 +10193,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 219470173}
-  m_RootOrder: 52
+  m_RootOrder: 53
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!154 &1960516073
 TerrainCollider:
