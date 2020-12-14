@@ -9,6 +9,8 @@ public class PlayerINV : MonoBehaviour
     public InventoryObject inventory;
     public InventoryObject equipment;
 
+    public CanvasGroup PickUpMenu;
+    public bool LookingatObj;
 
     public Attribute[] attributes;
 
@@ -147,12 +149,14 @@ public class PlayerINV : MonoBehaviour
     {
         var grounditem = other.GetComponent<GroundItem>();
         if (grounditem)
-        {
+        { 
+
             Item _item = new Item(grounditem.item);
             if (inventory.AddItem(_item, 1))
             {
                 Destroy(other.gameObject);
             }
+
 
         }
     }

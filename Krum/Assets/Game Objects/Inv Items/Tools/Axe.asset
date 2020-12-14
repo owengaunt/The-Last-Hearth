@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: 3d2c3ec6cfd8544e1962c7310f67d360, type: 3}
-  characterDisplay: {fileID: 1838499523744182934, guid: f647fa4349825409999b1aaedc45f71f, type: 3}
+  characterDisplay: {fileID: 5116262522404978291, guid: 880b2f7f5761b4153974f98afea56eb8, type: 3}
   stackable: 0
   type: 4
   description: Good For Cutting Down Trees

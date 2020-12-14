@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SnowPants25
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 0}
-  characterDisplay: {fileID: -3232474389227553179, guid: 23876383741afb14196096002e255bbd, type: 3}
+  characterDisplay: {fileID: 0}
   stackable: 0
   type: 2
   description: For Keeping Your Legs Warm

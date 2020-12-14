@@ -10,6 +10,8 @@ TagManager:
   - WeaponManager
   - Solid
   - Liquid
+  - Food
+  - Drink
   layers:
   - Default
   - TransparentFX
