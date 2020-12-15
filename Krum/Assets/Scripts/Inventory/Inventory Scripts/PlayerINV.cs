@@ -2,15 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerINV : MonoBehaviour
 {
-
+    public CharacterInput characterInput;
     public InventoryObject inventory;
     public InventoryObject equipment;
 
+    public Camera pickupCam;
     public CanvasGroup PickUpMenu;
     public bool LookingatObj;
+    public float range;
 
     public Attribute[] attributes;
 
@@ -25,6 +28,10 @@ public class PlayerINV : MonoBehaviour
     private BoneCombiner boneCombiner;
     private void Start()
     {
+        characterInput = GetComponent<CharacterInput>();
+
+        LookingatObj = false;
+
         boneCombiner = new BoneCombiner(gameObject);
 
         for (int i = 0; i < attributes.Length; i++)
@@ -172,8 +179,55 @@ public class PlayerINV : MonoBehaviour
             inventory.Load();
             equipment.Load();
         }
+
+        RaycastHit hit;
+        if (Physics.Raycast(pickupCam.transform.position, pickupCam.transform.forward, out hit, range))
+        {
+            if(hit.collider != null)
+            {
+                if ((hit.collider.tag == "Food" || hit.collider.tag == "Drink" || hit.collider.tag == "Item") && (characterInput.isMoving == false))
+                {
+                    ShowPickUpUI();
+                }
+                else
+                {
+                    HidePickUpUI();
+                }
+            }
+        }
+
+        if(characterInput.isMoving == true)
+        {
+            PickUpMenu.alpha = 0f;
+            PickUpMenu.blocksRaycasts = false;
+
+            LookingatObj = false;
+        }
     }
 
+    public void ShowPickUpUI()
+    {
+        LookingatObj = true;
+
+        if ((LookingatObj == true) && (characterInput.isMoving == false))
+        {
+            PickUpMenu.alpha = 1f;
+            PickUpMenu.blocksRaycasts = true;
+        }
+    
+    }
+
+    public void HidePickUpUI()
+    {
+        LookingatObj = false;
+
+        if (LookingatObj == false)
+        {
+            PickUpMenu.alpha = 0f;
+            PickUpMenu.blocksRaycasts = false;
+        }
+        
+    }
 
     public void AttributeModified(Attribute attribute)
     {

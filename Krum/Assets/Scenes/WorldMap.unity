@@ -1002,7 +1002,7 @@ GameObject:
   - component: {fileID: 223967226}
   m_Layer: 0
   m_Name: Axe
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6554,7 +6554,7 @@ GameObject:
   - component: {fileID: 1309287722}
   m_Layer: 0
   m_Name: Hat
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6873,6 +6873,7 @@ MonoBehaviour:
   rightwalkkey: 100
   leftwalkkey: 97
   backwalkkey: 115
+  isMoving: 0
 --- !u!136 &1353746122
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6933,10 +6934,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9eb0dff83924f87a3701ae403e3f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterInput: {fileID: 0}
   inventory: {fileID: 11400000, guid: f67623fa3f9494c5f888b631e762e10b, type: 2}
   equipment: {fileID: 11400000, guid: d578dec67842544298e4b1e60a6cf6bb, type: 2}
+  pickupCam: {fileID: 2079397125}
   PickUpMenu: {fileID: 2055331239}
   LookingatObj: 0
+  range: 3.5
   attributes:
   - type: 1
     value:
