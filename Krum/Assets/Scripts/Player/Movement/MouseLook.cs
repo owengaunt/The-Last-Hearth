@@ -8,7 +8,7 @@ public class MouseLook : MonoBehaviour
 
     public Camera axeCam;
 
-    public bool inventoryIsClosed;
+    public bool inventoryIsOpen;
     public bool looking;
 
     public float mouseSensitivity = 500f;
@@ -24,7 +24,7 @@ public class MouseLook : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
 
-        inventoryIsClosed = false;
+        inventoryIsOpen = false;
 
         looking = true; 
     }
@@ -44,10 +44,10 @@ public class MouseLook : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (inventoryIsClosed == true)
+            if (inventoryIsOpen == true)
             {
                 Cursor.lockState = CursorLockMode.Locked;
-                inventoryIsClosed = false;
+                inventoryIsOpen = false;
                 looking = true;
                 axeCam.cullingMask = (1 << LayerMask.NameToLayer("Player"));
 
@@ -55,7 +55,7 @@ public class MouseLook : MonoBehaviour
             else
             {
                 Cursor.lockState = CursorLockMode.None;
-                inventoryIsClosed = true;
+                inventoryIsOpen = true;
                 looking = false;
                 axeCam.cullingMask = (1 << LayerMask.NameToLayer("Nothing"));
             }

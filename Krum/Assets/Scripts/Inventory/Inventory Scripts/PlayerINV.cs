@@ -12,7 +12,9 @@ public class PlayerINV : MonoBehaviour
 
     public Camera pickupCam;
     public CanvasGroup PickUpMenu;
-    public bool LookingatObj;
+    public bool isLookingatObj;
+    public bool isReadytoPickUp;
+    public bool isPickedUp;
     public float range;
 
     public Attribute[] attributes;
@@ -30,7 +32,12 @@ public class PlayerINV : MonoBehaviour
     {
         characterInput = GetComponent<CharacterInput>();
 
-        LookingatObj = false;
+        PickUpMenu.alpha = 0f;
+        PickUpMenu.blocksRaycasts = false;
+
+        isLookingatObj = false;
+        isReadytoPickUp = false;
+        isPickedUp = false;
 
         boneCombiner = new BoneCombiner(gameObject);
 
@@ -152,21 +159,7 @@ public class PlayerINV : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        var grounditem = other.GetComponent<GroundItem>();
-        if (grounditem)
-        { 
-
-            Item _item = new Item(grounditem.item);
-            if (inventory.AddItem(_item, 1))
-            {
-                Destroy(other.gameObject);
-            }
-
-
-        }
-    }
+   
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Y))
@@ -185,9 +178,16 @@ public class PlayerINV : MonoBehaviour
         {
             if(hit.collider != null)
             {
-                if ((hit.collider.tag == "Food" || hit.collider.tag == "Drink" || hit.collider.tag == "Item") && (characterInput.isMoving == false))
+
+                if (hit.collider.tag == "Food" || hit.collider.tag == "Drink" || hit.collider.tag == "Item")  
                 {
-                    ShowPickUpUI();
+
+                    if (characterInput.isMoving == false)
+                    {
+                        ShowPickUpUI();
+                        isPickedUp = false;
+                    }
+                    
                 }
                 else
                 {
@@ -201,15 +201,15 @@ public class PlayerINV : MonoBehaviour
             PickUpMenu.alpha = 0f;
             PickUpMenu.blocksRaycasts = false;
 
-            LookingatObj = false;
+            isLookingatObj = false;
         }
     }
 
     public void ShowPickUpUI()
     {
-        LookingatObj = true;
+        isLookingatObj = true;
 
-        if ((LookingatObj == true) && (characterInput.isMoving == false))
+        if ((isLookingatObj == true) && (characterInput.isMoving == false))
         {
             PickUpMenu.alpha = 1f;
             PickUpMenu.blocksRaycasts = true;
@@ -219,15 +219,53 @@ public class PlayerINV : MonoBehaviour
 
     public void HidePickUpUI()
     {
-        LookingatObj = false;
+        isLookingatObj = false;
 
-        if (LookingatObj == false)
+        if (isLookingatObj == false)
         {
             PickUpMenu.alpha = 0f;
             PickUpMenu.blocksRaycasts = false;
         }
         
     }
+
+
+    public void OnTriggerEnter()
+    {
+        isLookingatObj = true;
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (isPickedUp == false)
+        {
+            if (Input.GetKey(KeyCode.F))
+            {
+                var grounditem = other.GetComponent<GroundItem>();
+                if (grounditem)
+                {
+                    if (characterInput.isMoving == false)
+                    {
+                        Item _item = new Item(grounditem.item);
+                        if (inventory.AddItem(_item, 1))
+                        {
+                            Destroy(other.gameObject);
+                            isPickedUp = true;
+                            PickUpMenu.alpha = 0f;
+                            PickUpMenu.blocksRaycasts = false;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    public void OnTriggerExit(Collider other)
+    {
+        isLookingatObj = false;
+    }
+    
 
     public void AttributeModified(Attribute attribute)
     {
