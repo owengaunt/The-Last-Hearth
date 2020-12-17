@@ -178,7 +178,6 @@ public class PlayerINV : MonoBehaviour
         {
             if(hit.collider != null)
             {
-
                 if (hit.collider.tag == "Food" || hit.collider.tag == "Drink" || hit.collider.tag == "Item")  
                 {
 
@@ -187,7 +186,6 @@ public class PlayerINV : MonoBehaviour
                         ShowPickUpUI();
                         isPickedUp = false;
                     }
-                    
                 }
                 else
                 {

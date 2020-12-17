@@ -20,4 +20,12 @@ MonoBehaviour:
   data:
     Name: 
     Id: 3
-    buffs: []
+    buffs:
+    - attribute: 3
+      value: 0
+      min: 40
+      max: 40
+    - attribute: 5
+      value: 0
+      min: 50
+      max: 50
