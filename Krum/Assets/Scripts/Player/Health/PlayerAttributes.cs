@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAttributes : MonoBehaviour
 {
 
+    CharacterInput characterInput;
 
     //Attributes
     public float maxHunger, maxThirst, maxStamina, maxColdness;
@@ -15,6 +16,8 @@ public class PlayerAttributes : MonoBehaviour
     void Start()
     {
 
+        characterInput = GetComponent<CharacterInput>();
+
         hunger = maxHunger;
         thirst = maxThirst;
         stamina = maxStamina;
@@ -24,43 +27,67 @@ public class PlayerAttributes : MonoBehaviour
     void Update()
     {
         if(hunger > 0)
-            hunger -= 0.3f * Time.deltaTime;
+            hunger -= 0.2f * Time.deltaTime;
 
         if (thirst > 0)
-            thirst -= 0.45f * Time.deltaTime;
+            thirst -= 0.25f * Time.deltaTime;
 
-        if(hunger >= maxHunger || thirst >= maxThirst)
+        if(hunger <= 1 || thirst <= 1)
             Die();
 
-        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0)
+        if (Input.GetKey(KeyCode.LeftShift) && (stamina > 0) && (coldness < 100))
         {
             stamina -= 5 * Time.deltaTime;
+            coldness += 3 * Time.deltaTime;
+            hunger -= 1 * Time.deltaTime;
         }
         else
         {
             StartCoroutine(RegainStamina());
         }
 
-        if(stamina <= 0)
+        if(stamina <= 1)
             print("Too Tired");
 
         coldness -= 1 * Time.deltaTime;
+
+        if (hunger < 100)
+        {
+             Eat();
+        }
+
+        if(thirst < 100)
+        {
+             Drink();
+        }
     }
-    
-    public void Ingestion()
+
+    public void Eat()
     {
-        //if(Attributes.Hunger == itembuff.value 80)
+
+        if (hunger < 100)
         {
-            hunger = hunger + 80;
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                print("YOU ATE");
+                hunger = maxHunger;
+            }
         }
 
-        
-        {
-            thirst = thirst + 50;
-        }
+    }   
 
+    public void Drink()
+    {
+        if (thirst < 100)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                print("YOU DRANK");
+                thirst = maxThirst;
+            }
+        }
     }
-
+   
     public IEnumerator RegainStamina()
     {
         yield return new WaitForSeconds(2f);

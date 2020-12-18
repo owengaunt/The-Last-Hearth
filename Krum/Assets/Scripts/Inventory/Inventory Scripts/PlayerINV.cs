@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerINV : MonoBehaviour
 {
-    public CharacterInput characterInput;
+    CharacterInput characterInput;
     public InventoryObject inventory;
     public InventoryObject equipment;
 
@@ -19,13 +19,14 @@ public class PlayerINV : MonoBehaviour
 
     public Attribute[] attributes;
 
-    private Transform _default;
+    private Transform _food;
     private Transform _tools;
     private Transform _hat;
     private Transform _snowpants;
     private Transform _jacket;
 
     public Transform toolTransform;
+    public Transform foodTransform;
 
     private BoneCombiner boneCombiner;
     private void Start()
@@ -80,6 +81,9 @@ public class PlayerINV : MonoBehaviour
                 {
                     switch (_slot.AllowedItems[0])
                     {
+                        case ItemType.Food:
+                            Destroy(_food.gameObject);
+                            break;
                         case ItemType.Tools:
                             Destroy(_tools.gameObject);
                             break;
@@ -134,6 +138,9 @@ public class PlayerINV : MonoBehaviour
                 {
                     switch (_slot.AllowedItems[0])
                     {
+                        case ItemType.Food:
+                            _food = Instantiate(_slot.ItemObject.characterDisplay, foodTransform).transform;
+                            break;
                         case ItemType.Tools:
                             _tools = Instantiate(_slot.ItemObject.characterDisplay, toolTransform).transform; 
                             break;
@@ -172,6 +179,8 @@ public class PlayerINV : MonoBehaviour
             inventory.Load();
             equipment.Load();
         }
+
+        
 
         RaycastHit hit;
         if (Physics.Raycast(pickupCam.transform.position, pickupCam.transform.forward, out hit, range))
