@@ -24,12 +24,14 @@ public class PlayerINV : MonoBehaviour
     private Transform _hat;
     private Transform _snowpants;
     private Transform _jacket;
+    private Transform _drink;
 
     public bool isfoodEquipped = false;
     public bool isdrinkEquipped = false;
 
     public Transform toolTransform;
     public Transform foodTransform;
+    public Transform drinkTransform;
 
     private BoneCombiner boneCombiner;
     private void Start()
@@ -86,6 +88,7 @@ public class PlayerINV : MonoBehaviour
                     {
                         case ItemType.Food:
                             Destroy(_food.gameObject);
+                            isfoodEquipped = false;
                             break;
                         case ItemType.Tools:
                             Destroy(_tools.gameObject);
@@ -99,7 +102,10 @@ public class PlayerINV : MonoBehaviour
                         case ItemType.Jacket:
                             Destroy(_jacket.gameObject);
                             break;
-
+                        case ItemType.Drink:
+                            Destroy(_drink.gameObject);
+                            isdrinkEquipped = false;
+                            break;
                     }
                 }
 
@@ -157,6 +163,10 @@ public class PlayerINV : MonoBehaviour
                         case ItemType.Jacket:
                             _jacket = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay);
                             break;
+                        case ItemType.Drink:
+                            _drink = Instantiate(_slot.ItemObject.characterDisplay, drinkTransform).transform;
+                            isdrinkEquipped = true;
+                            break;
 
                     }
                 }
@@ -173,6 +183,7 @@ public class PlayerINV : MonoBehaviour
    
     private void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Y))
         {
             inventory.Save();

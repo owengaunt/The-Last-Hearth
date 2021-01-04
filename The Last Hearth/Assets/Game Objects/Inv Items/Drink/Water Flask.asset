@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Water Flask
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: c77f549c64a6c4535940714251cb039f, type: 3}
-  characterDisplay: {fileID: 0}
+  characterDisplay: {fileID: 1788873266445788905, guid: 487f5c1c5ce41ca489e9399576783ac9, type: 3}
   stackable: 0
   type: 6
   description: A full water bottle ready to be drunk

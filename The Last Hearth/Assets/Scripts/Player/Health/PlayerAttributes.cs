@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAttributes : MonoBehaviour
 {
+    PlayerINV playerINV; 
 
     CharacterInput characterInput;
 
@@ -15,6 +16,7 @@ public class PlayerAttributes : MonoBehaviour
 
     void Start()
     {
+        playerINV = GetComponent<PlayerINV>();
 
         characterInput = GetComponent<CharacterInput>();
 
@@ -65,27 +67,24 @@ public class PlayerAttributes : MonoBehaviour
     public void Eat()
     {
 
-        //if (hunger < 100)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.F))
-        //    {
-        //        print("YOU ATE");
-        //        hunger = maxHunger;
-        //    }
-        //}
-
+        if (hunger < 100)
+            if (Input.GetMouseButtonDown(0))
+                if(playerINV.isfoodEquipped == true)
+                {
+                    print("YOU ATE");
+                    hunger = maxHunger;
+                }
     }   
 
     public void Drink()
     {
-        //if (thirst < 100)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.F))
-        //    {
-        //        print("YOU DRANK");
-        //        thirst = maxThirst;
-        //    }
-        //}
+        if (thirst < 100)
+            if (Input.GetMouseButtonDown(0))
+                if (playerINV.isdrinkEquipped == true)
+                {
+                    print("YOU DRANK");
+                    thirst = maxThirst;
+                }            
     }
    
     public IEnumerator RegainStamina()
