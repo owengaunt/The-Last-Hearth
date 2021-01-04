@@ -25,6 +25,9 @@ public class PlayerINV : MonoBehaviour
     private Transform _snowpants;
     private Transform _jacket;
 
+    public bool isfoodEquipped = false;
+    public bool isdrinkEquipped = false;
+
     public Transform toolTransform;
     public Transform foodTransform;
 
@@ -140,6 +143,7 @@ public class PlayerINV : MonoBehaviour
                     {
                         case ItemType.Food:
                             _food = Instantiate(_slot.ItemObject.characterDisplay, foodTransform).transform;
+                            isfoodEquipped = true;
                             break;
                         case ItemType.Tools:
                             _tools = Instantiate(_slot.ItemObject.characterDisplay, toolTransform).transform; 

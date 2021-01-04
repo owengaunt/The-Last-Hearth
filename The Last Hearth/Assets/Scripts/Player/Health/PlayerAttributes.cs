@@ -65,27 +65,27 @@ public class PlayerAttributes : MonoBehaviour
     public void Eat()
     {
 
-        if (hunger < 100)
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                print("YOU ATE");
-                hunger = maxHunger;
-            }
-        }
+        //if (hunger < 100)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.F))
+        //    {
+        //        print("YOU ATE");
+        //        hunger = maxHunger;
+        //    }
+        //}
 
     }   
 
     public void Drink()
     {
-        if (thirst < 100)
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                print("YOU DRANK");
-                thirst = maxThirst;
-            }
-        }
+        //if (thirst < 100)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.F))
+        //    {
+        //        print("YOU DRANK");
+        //        thirst = maxThirst;
+        //    }
+        //}
     }
    
     public IEnumerator RegainStamina()

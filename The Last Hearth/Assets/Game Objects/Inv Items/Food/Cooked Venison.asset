@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 0}
   characterDisplay: {fileID: 0}
-  stackable: 1
+  stackable: 0
   type: 0
   description: A Hearty Meal for a Lone Survivor
   data:

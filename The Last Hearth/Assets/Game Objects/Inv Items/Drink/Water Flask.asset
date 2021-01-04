@@ -15,7 +15,7 @@ MonoBehaviour:
   uiDisplay: {fileID: 21300000, guid: c77f549c64a6c4535940714251cb039f, type: 3}
   characterDisplay: {fileID: 0}
   stackable: 0
-  type: 0
+  type: 6
   description: A full water bottle ready to be drunk
   data:
     Name: 

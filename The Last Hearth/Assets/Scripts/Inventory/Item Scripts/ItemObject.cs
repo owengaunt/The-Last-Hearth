@@ -9,7 +9,8 @@ public enum ItemType
     SnowPants,
     Jacket,
     Tools,
-    Default
+    Default,
+    Drink
 }
 
 public enum Attributes
