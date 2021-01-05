@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttributes : MonoBehaviour
-{
+{   
     PlayerINV playerINV; 
-
     CharacterInput characterInput;
+
+    public bool inventoryEnabled = false;
+    public bool hasEaten = false;
+    public bool hasDrinken = false;
 
     //Attributes
     public float maxHunger, maxThirst, maxStamina, maxColdness;
@@ -15,9 +18,8 @@ public class PlayerAttributes : MonoBehaviour
     private bool running;
 
     void Start()
-    {
+    {   
         playerINV = GetComponent<PlayerINV>();
-
         characterInput = GetComponent<CharacterInput>();
 
         hunger = maxHunger;
@@ -28,7 +30,16 @@ public class PlayerAttributes : MonoBehaviour
 
     void Update()
     {
-        if(hunger > 0)
+        //Inventory Open
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            inventoryEnabled = !inventoryEnabled;
+        }
+
+
+        //stat changes
+        if (hunger > 0)
             hunger -= 0.2f * Time.deltaTime;
 
         if (thirst > 0)
@@ -66,25 +77,32 @@ public class PlayerAttributes : MonoBehaviour
 
     public void Eat()
     {
-
-        if (hunger < 100)
-            if (Input.GetMouseButtonDown(0))
-                if(playerINV.isfoodEquipped == true)
-                {
-                    print("YOU ATE");
-                    hunger = maxHunger;
-                }
+        if ((hunger < 100) && (inventoryEnabled == false) && (playerINV.isLookingatObj == false))
+            if (Input.GetKeyDown(KeyCode.F))
+                    if (playerINV.isfoodEquipped == true)
+                    {
+                        print("YOU ATE");
+                        hunger = maxHunger;
+                        hasEaten = true;
+                        StartCoroutine(NoEat());
+                    }
+        
     }   
 
     public void Drink()
     {
-        if (thirst < 100)
-            if (Input.GetMouseButtonDown(0))
-                if (playerINV.isdrinkEquipped == true)
-                {
-                    print("YOU DRANK");
-                    thirst = maxThirst;
-                }            
+
+        if ((hunger < 100) && (inventoryEnabled == false) && (playerINV.isLookingatObj == false))
+            if (Input.GetKeyDown(KeyCode.F))
+                    if (playerINV.isdrinkEquipped == true)
+                    {
+                        print("YOU DRANK");
+                        thirst = maxThirst;
+                        hasDrinken = true;
+                        StartCoroutine(NoDrink());
+                    }
+            
+            
     }
    
     public IEnumerator RegainStamina()
@@ -111,4 +129,20 @@ public class PlayerAttributes : MonoBehaviour
         print("DEAD");
     }
 
+    public IEnumerator NoEat()
+    {
+        yield return new WaitForSeconds(0.3f);
+        {
+            hasEaten = false;
+        }
+    }
+
+
+    public IEnumerator NoDrink()
+    {
+        yield return new WaitForSeconds(0.3f);
+        {
+            hasDrinken = false;
+        }
+    }
 }

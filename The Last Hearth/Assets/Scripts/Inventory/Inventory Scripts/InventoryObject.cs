@@ -88,7 +88,6 @@ public class InventoryObject : ScriptableObject
         }
     }
 
-
     public void RemoveItem(Item _item)
     {
         for (int i = 0; i < Container.Slots.Length; i++)

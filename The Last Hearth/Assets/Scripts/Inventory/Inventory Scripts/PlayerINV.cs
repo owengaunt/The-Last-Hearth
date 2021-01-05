@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class PlayerINV : MonoBehaviour
 {
     CharacterInput characterInput;
+    PlayerAttributes playerAttributes;
+
     public InventoryObject inventory;
     public InventoryObject equipment;
 
@@ -37,6 +39,7 @@ public class PlayerINV : MonoBehaviour
     private void Start()
     {
         characterInput = GetComponent<CharacterInput>();
+        playerAttributes = GetComponent<PlayerAttributes>();
 
         PickUpMenu.alpha = 0f;
         PickUpMenu.blocksRaycasts = false;
@@ -57,7 +60,7 @@ public class PlayerINV : MonoBehaviour
             equipment.GetSlots[i].OnAfterUpdate += OnAddItem;
         }
     }
-
+    
     public void OnRemoveItem(InventorySlot _slot)
     {
         if (_slot.ItemObject == null)
@@ -117,8 +120,7 @@ public class PlayerINV : MonoBehaviour
                 break;
         }
     }
-
-
+    
     public void OnAddItem(InventorySlot _slot)
     {
         if (_slot.ItemObject == null)
