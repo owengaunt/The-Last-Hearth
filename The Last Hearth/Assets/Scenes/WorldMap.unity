@@ -9133,7 +9133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 314635380771727164, guid: ccdad3b9cb2a8459b91872ddb14c0024, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.7480278
+      value: -0.7480316
       objectReference: {fileID: 0}
     - target: {fileID: 314635380771727164, guid: ccdad3b9cb2a8459b91872ddb14c0024, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -11698,6 +11698,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1721652030}
     m_Modifications:
+    - target: {fileID: 2429314125713051070, guid: 0f8443c59e4084fed85d7fc661ea9769, type: 3}
+      propertyPath: m_Height
+      value: 0.14903687
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429314125713051070, guid: 0f8443c59e4084fed85d7fc661ea9769, type: 3}
+      propertyPath: m_Center.z
+      value: 0.06904832
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429314125713051070, guid: 0f8443c59e4084fed85d7fc661ea9769, type: 3}
+      propertyPath: m_Center.y
+      value: 0.0013184643
+      objectReference: {fileID: 0}
     - target: {fileID: 2524842236794538020, guid: 0f8443c59e4084fed85d7fc661ea9769, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1027
@@ -11746,10 +11758,18 @@ PrefabInstance:
       propertyPath: thrust
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 2630299949802472543, guid: 0f8443c59e4084fed85d7fc661ea9769, type: 3}
+      propertyPath: speed
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 2630299949802472546, guid: 0f8443c59e4084fed85d7fc661ea9769, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 85db24f2eb40a7e4aa7dfde859fcc953, type: 2}
+    - target: {fileID: 2630299949802472547, guid: 0f8443c59e4084fed85d7fc661ea9769, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2900839395189510814, guid: 0f8443c59e4084fed85d7fc661ea9769, type: 3}
       propertyPath: m_Name
       value: Black Spruce

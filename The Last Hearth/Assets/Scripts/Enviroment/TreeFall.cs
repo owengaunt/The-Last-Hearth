@@ -4,25 +4,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TreeFall : MonoBehaviour
-{
+{   
     AxeHit axeHit;
 
     public GameObject tree;
     public GameObject log;
 
     public float health = 50f;
-    public float thrust = 1.0f;
-    public float distanceOffset = 2f;
-    public float distance2Offset = 4f;
-    public float distance3Offset = 6f;
+    public bool isTreeFallen = false;
 
-
+    public int speed = 14;
 
     public Rigidbody rb;
+    public Vector3 position;
 
+    void Awake()
+    {
+        position = new Vector3(UnityEngine.Random.Range(-1.0f, 1), 0, UnityEngine.Random.Range(-1.0f, 1.0f));
+    }
+    
     public void Start()
     {
-     
+        tree = this.gameObject;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -31,19 +34,36 @@ public class TreeFall : MonoBehaviour
         health -= amount;
         if (health <= 0f)
         {
-          
-           Die();
+            GetComponent<Rigidbody>().isKinematic = false;
+            GetComponent<Rigidbody>().AddForce(transform.forward * speed);
+            StartCoroutine(Die());
         }
     }
-    void Die()
+
+    public IEnumerator Die()
     {
+        yield return new WaitForSeconds(7);
+
         Destroy(tree);
 
-        Instantiate(original : log, position: tree.transform.position + (Vector3.left * distanceOffset), rotation: tree.transform.rotation, parent: null);
-        Instantiate(original: log, position: tree.transform.position + (Vector3.left * distance2Offset), rotation: tree.transform.rotation, parent: null);
-        Instantiate(original: log, position: tree.transform.position + (Vector3.left * distance3Offset), rotation: tree.transform.rotation, parent: null);
+        if(isTreeFallen == false)
+        {
+            Instantiate(log, tree.transform.position + new Vector3(0, 0, 0) + position, Quaternion.identity);
+            Instantiate(log, tree.transform.position + new Vector3(2, 2, 0) + position, Quaternion.identity);
+            Instantiate(log, tree.transform.position + new Vector3(5, 5, 0) + position, Quaternion.identity);
+            StartCoroutine(TreeReset());
+        }
 
-
+        isTreeFallen = true;
+    }
+   
+    public IEnumerator TreeReset()
+    {
+        if(isTreeFallen == true)
+        {
+            yield return new WaitForSeconds(4);
+            isTreeFallen = false;
+        }
     }
 
 }
