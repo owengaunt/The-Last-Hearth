@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Machete
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 0}
+  characterDisplay: {fileID: 8918397646566970754, guid: 5ba4d794015e60d42bd7dcc7a36ddf8b, type: 3}
   stackable: 0
   type: 4
   description: Good for swinging at things
