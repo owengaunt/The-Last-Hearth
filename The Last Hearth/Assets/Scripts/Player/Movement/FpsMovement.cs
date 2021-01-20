@@ -288,7 +288,7 @@ public class FpsMovement : MonoBehaviour
         //crouch right
         if ((isCrouched == true) && Input.GetKey(characterinput.rightwalkkey) && !isWalking && !isBWDWalking && !isSprinting)
         {
-            anim.SetBool("isCrouchL", true);
+            anim.SetBool("isCrouchR", true);
             anim.SetBool("isCrouching", false);
             anim.SetBool("isDFLWalking", false);
             anim.SetBool("isLWalking", false);
