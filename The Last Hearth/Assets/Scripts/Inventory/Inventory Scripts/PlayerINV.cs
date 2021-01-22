@@ -30,6 +30,7 @@ public class PlayerINV : MonoBehaviour
 
     public bool isfoodEquipped = false;
     public bool isdrinkEquipped = false;
+    public bool istoolEquipped = false;
 
     public Transform toolTransform;
     public Transform foodTransform;
@@ -95,6 +96,7 @@ public class PlayerINV : MonoBehaviour
                             break;
                         case ItemType.Tools:
                             Destroy(_tools.gameObject);
+                            istoolEquipped = false;
                             break;
                         case ItemType.Hat:
                             Destroy(_hat.gameObject);
@@ -154,7 +156,8 @@ public class PlayerINV : MonoBehaviour
                             isfoodEquipped = true;
                             break;
                         case ItemType.Tools:
-                            _tools = Instantiate(_slot.ItemObject.characterDisplay, toolTransform).transform; 
+                            _tools = Instantiate(_slot.ItemObject.characterDisplay, toolTransform).transform;
+                            istoolEquipped = true;
                             break;
                         case ItemType.Hat:
                             _hat = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay);
@@ -182,10 +185,8 @@ public class PlayerINV : MonoBehaviour
         }
     }
 
-   
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Y))
         {
             inventory.Save();

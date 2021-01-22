@@ -16,6 +16,7 @@ public enum InterfaceType
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class InventoryObject : ScriptableObject
 {
+
     public string savePath;
     public ItemDatabaseObject database;
     public InterfaceType type;
@@ -141,7 +142,6 @@ public class Inventory
         }
     }
 }
-
 
 public delegate void SlotUpdated(InventorySlot _slot);
 
