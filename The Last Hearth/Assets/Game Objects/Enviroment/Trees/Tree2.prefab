@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4171160020745080259}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tree2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 5466389171631646332}
   - component: {fileID: 5466389171631646333}
   - component: {fileID: 5466389171631646330}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SnowPine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 9050958262491707322}
   - component: {fileID: 1539461759458012441}
   - component: {fileID: 8411594083999962638}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stump1.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
