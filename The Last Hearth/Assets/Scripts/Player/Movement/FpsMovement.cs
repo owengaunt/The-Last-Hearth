@@ -29,7 +29,6 @@ public class FpsMovement : MonoBehaviour
     public bool Swinging = false;
 
     bool inventoryEnabled = false;
-    bool isCrouched;
     bool isGrounded;
     bool isWalking = false;
     bool isBWDWalking = false;
@@ -80,24 +79,18 @@ public class FpsMovement : MonoBehaviour
         CharacterController.Move(velocity * Time.deltaTime);
 
 
-        if (Input.GetButtonDown("Jump") && isGrounded && !isCrouched)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
-
-        if (Input.GetKeyUp(characterinput.crouchkey))
-        {
-            DoCrouch();
-        }
-
         
-        if (Input.GetKey(characterinput.backwalkkey) && !isCrouched)
+        if (Input.GetKey(characterinput.backwalkkey))
         {
             speed = walkspeed;
         }
         else
         {
-            if (Input.GetKeyDown(characterinput.sprintkey) && !isCrouched)
+            if (Input.GetKeyDown(characterinput.sprintkey))
             {
                 speed = runspeed;
 
@@ -114,7 +107,7 @@ public class FpsMovement : MonoBehaviour
 
         //walking animations
         //forward
-        if (Input.GetKey(characterinput.walkkey) && !isRightWalking && !isLeftWalking && !isCrouched && !isSprinting && isGrounded && !Swinging)
+        if (Input.GetKey(characterinput.walkkey) && !isRightWalking && !isLeftWalking && !isSprinting && !Swinging)
         {
             anim.SetBool("isWalking", true);
             isWalking = true;
@@ -126,7 +119,7 @@ public class FpsMovement : MonoBehaviour
         }
 
         //backwards
-        if (Input.GetKey(characterinput.backwalkkey) && !isRightWalking && !isLeftWalking && !isCrouched && !isSprinting && isGrounded && !Swinging)
+        if (Input.GetKey(characterinput.backwalkkey) && !isRightWalking && !isLeftWalking && !isSprinting && !Swinging)
         {
             anim.SetBool("isBWalking", true);
             isBWDWalking = true;
@@ -139,7 +132,7 @@ public class FpsMovement : MonoBehaviour
         }
 
         //left
-        if (Input.GetKey(characterinput.leftwalkkey) && !isWalking && !isBWDWalking && !isCrouched && !isSprinting && isGrounded && !Swinging)
+        if (Input.GetKey(characterinput.leftwalkkey) && !isWalking && !isBWDWalking && !isSprinting && !Swinging)
         {
             anim.SetBool("isLWalking", true);
             isLeftWalking = true;
@@ -151,7 +144,7 @@ public class FpsMovement : MonoBehaviour
         }
 
         //right
-        if (Input.GetKey(characterinput.rightwalkkey) && !isWalking && !isBWDWalking && !isCrouched && !isSprinting && isGrounded && !Swinging)
+        if (Input.GetKey(characterinput.rightwalkkey) && !isWalking && !isBWDWalking && !isSprinting && !Swinging)
         {
             anim.SetBool("isRWalking", true);
             isRightWalking = true;
@@ -163,7 +156,7 @@ public class FpsMovement : MonoBehaviour
         }
 
         //diagonal front left
-        if (Input.GetKey(characterinput.leftwalkkey) && Input.GetKey(characterinput.walkkey) && !isCrouched && !isSprinting && isGrounded && !Swinging)
+        if (Input.GetKey(characterinput.leftwalkkey) && Input.GetKey(characterinput.walkkey) && !isSprinting && !Swinging)
         {
             anim.SetBool("isDFLWalking", true);
             anim.SetBool("isLWalking", false);
@@ -177,7 +170,7 @@ public class FpsMovement : MonoBehaviour
 
 
         //diagonal front right
-        if (Input.GetKey(characterinput.rightwalkkey) && Input.GetKey(characterinput.walkkey) && !isCrouched && !isSprinting && isGrounded && !Swinging)
+        if (Input.GetKey(characterinput.rightwalkkey) && Input.GetKey(characterinput.walkkey) && !isSprinting && !Swinging)
         {
             anim.SetBool("isDFRWalking", true);
             anim.SetBool("isRWalking", false);
@@ -189,7 +182,7 @@ public class FpsMovement : MonoBehaviour
         }
 
         //diagonal back left
-        if (Input.GetKey(characterinput.leftwalkkey) && Input.GetKey(characterinput.backwalkkey) && !isCrouched && !isSprinting && isGrounded && !Swinging)
+        if (Input.GetKey(characterinput.leftwalkkey) && Input.GetKey(characterinput.backwalkkey) && !isSprinting && !Swinging)
         {
             anim.SetBool("isDBLWalking", true);
             anim.SetBool("isLWalking", false);
@@ -201,7 +194,7 @@ public class FpsMovement : MonoBehaviour
         }
 
         //diagonal back right
-        if (Input.GetKey(characterinput.rightwalkkey) && Input.GetKey(characterinput.backwalkkey) && !isCrouched && !isSprinting && isGrounded && !Swinging)
+        if (Input.GetKey(characterinput.rightwalkkey) && Input.GetKey(characterinput.backwalkkey) && !isSprinting && !Swinging)
         {
             anim.SetBool("isDBRWalking", true);
             anim.SetBool("isRWalking", false);
@@ -214,7 +207,7 @@ public class FpsMovement : MonoBehaviour
 
         //extra movement animations
         //jumping
-        if (isGrounded == false)
+        if (Input.GetKey(characterinput.jumpkey))
         {
             anim.SetBool("isJumping", true);
         }
@@ -224,7 +217,7 @@ public class FpsMovement : MonoBehaviour
         }
 
         //sprinting forward
-        if (Input.GetKey(characterinput.sprintkey) && Input.GetKey(characterinput.walkkey) && !isCrouched && isGrounded && !Swinging)
+        if (Input.GetKey(characterinput.sprintkey) && Input.GetKey(characterinput.walkkey) && !Swinging)
         {
             anim.SetBool("isSprinting", true);
             anim.SetBool("isWalking", false);
@@ -235,86 +228,6 @@ public class FpsMovement : MonoBehaviour
             anim.SetBool("isSprinting", false);
             isSprinting = false;
         }
-
-        //crouchidle
-        if( isCrouched == true)
-        {
-            anim.SetBool("isCrouching", true);
-        }
-        else
-        {
-            anim.SetBool("isCrouching", false);
-        }
-        
-        //crouch forward
-        if ((isCrouched == true) && Input.GetKey(characterinput.walkkey) && !isRightWalking && !isLeftWalking && !isSprinting && !Swinging)
-        {
-            anim.SetBool("isCrouchFWD", true);
-            anim.SetBool("isCrouching", false);
-            anim.SetBool("isDFLWalking", false);
-            anim.SetBool("isLWalking", false);
-            anim.SetBool("isWalking", false);
-            anim.SetBool("isDBRWalking", false);
-            anim.SetBool("isRWalking", false);
-            anim.SetBool("isBWalking", false);
-        }
-        else
-        {
-            anim.SetBool("isCrouchFWD", false);
-        }
-    
-        //crouch backward
-        if ((isCrouched == true) && Input.GetKey(characterinput.backwalkkey) && !isRightWalking && !isLeftWalking && !isSprinting && !Swinging)
-        {
-            anim.SetBool("isCrouchBWD", true);
-            anim.SetBool("isCrouching", false);
-            anim.SetBool("isDFLWalking", false);
-            anim.SetBool("isLWalking", false);
-            anim.SetBool("isWalking", false);
-            anim.SetBool("isDBRWalking", false);
-            anim.SetBool("isRWalking", false);
-            anim.SetBool("isBWalking", false);
-        }
-        else
-        {
-            anim.SetBool("isCrouchBWD", false);
-        }
-
-        //crouch left
-        if ((isCrouched == true) && Input.GetKey(characterinput.leftwalkkey) && !isWalking && !isBWDWalking && !isSprinting && !Swinging)
-        {
-            anim.SetBool("isCrouchL", true);
-            anim.SetBool("isCrouching", false);
-            anim.SetBool("isDFLWalking", false);
-            anim.SetBool("isLWalking", false);
-            anim.SetBool("isWalking", false);
-            anim.SetBool("isDBRWalking", false);
-            anim.SetBool("isRWalking", false);
-            anim.SetBool("isBWalking", false);
-        }
-        else
-        {
-            anim.SetBool("isCrouchL", false);
-        }
-
-
-        //crouch right
-        if ((isCrouched == true) && Input.GetKey(characterinput.rightwalkkey) && !isWalking && !isBWDWalking && !isSprinting && !Swinging)
-        {
-            anim.SetBool("isCrouchR", true);
-            anim.SetBool("isCrouching", false);
-            anim.SetBool("isDFLWalking", false);
-            anim.SetBool("isLWalking", false);
-            anim.SetBool("isWalking", false);
-            anim.SetBool("isDBRWalking", false);
-            anim.SetBool("isRWalking", false);
-            anim.SetBool("isBWalking", false);
-        }
-        else
-        {
-            anim.SetBool("isCrouchR", false);
-        }
-
 
         //swing animations
         if ((playerINV.istoolEquipped == true) && (Input.GetMouseButton(0)) && inventoryEnabled == false)
@@ -330,30 +243,10 @@ public class FpsMovement : MonoBehaviour
 
         public IEnumerator ResetSwing()
     {
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(0.9f);
 
             anim.SetBool("isSwinging", false);
             Swinging = false;
     } 
-
-        void DoCrouch()
-    {
-        
-            if (isCrouched)
-            {
-                theCollider.height += 1f;
-                CharacterController.height += 1f;
-                speed = walkspeed;
-            }
-            else
-            {
-                theCollider.height -= 1f;
-                CharacterController.height -= 1f;
-                speed = crouchspeed;
-            }
-                isCrouched = !isCrouched;
-            
-            }
-
 
 }
