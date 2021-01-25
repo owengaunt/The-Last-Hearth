@@ -220,7 +220,7 @@ public class FpsMovement : MonoBehaviour
 
         //extra movement animations
         //jumping
-        if ((Input.GetKey(characterinput.jumpkey) && !canJump))
+        if (!isGrounded)
         {
             anim.SetBool("isJumping", true);
         }
