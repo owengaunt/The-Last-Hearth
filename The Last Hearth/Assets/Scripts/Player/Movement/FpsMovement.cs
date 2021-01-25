@@ -28,6 +28,8 @@ public class FpsMovement : MonoBehaviour
 
     public bool Swinging = false;
 
+
+    bool canJump = true;
     bool inventoryEnabled = false;
     bool isGrounded;
     bool isWalking = false;
@@ -79,9 +81,12 @@ public class FpsMovement : MonoBehaviour
         CharacterController.Move(velocity * Time.deltaTime);
 
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && canJump == true)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            canJump = false;
+
+            StartCoroutine(JumpReset());
         }
         
         if (Input.GetKey(characterinput.backwalkkey))
@@ -96,8 +101,16 @@ public class FpsMovement : MonoBehaviour
 
             }
         }
-       
 
+        if (!isGrounded)
+        {
+            StartCoroutine(AreYouFalling());
+        }
+        else
+        {
+            canJump = true;
+        }
+        
 
         if (Input.GetKeyUp(characterinput.sprintkey))
         {
@@ -207,7 +220,7 @@ public class FpsMovement : MonoBehaviour
 
         //extra movement animations
         //jumping
-        if (Input.GetKey(characterinput.jumpkey))
+        if ((Input.GetKey(characterinput.jumpkey) && !canJump))
         {
             anim.SetBool("isJumping", true);
         }
@@ -239,6 +252,31 @@ public class FpsMovement : MonoBehaviour
         
         //standingswing
 
+    }
+
+        public IEnumerator AreYouFalling()
+    {
+        if (isGrounded)
+        {
+            canJump = true;
+        }
+        else
+        {
+            yield return new WaitForSeconds(1f);
+
+            if (!isGrounded)
+            {
+                canJump = false;
+            }
+        }
+     
+    }
+
+        public IEnumerator JumpReset()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        canJump = true;
     }
 
         public IEnumerator ResetSwing()

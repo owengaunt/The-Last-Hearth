@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02130cb40948746d9ad39bec61163506, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 3d2c3ec6cfd8544e1962c7310f67d360, type: 3}
+  uiDisplay: {fileID: 21300000, guid: f6d971aeb66da3748a0fb581541bcfcb, type: 3}
   characterDisplay: {fileID: 5982993507701483949, guid: 38122325e3e35a0419926787fdc56ff7, type: 3}
   stackable: 0
   type: 4

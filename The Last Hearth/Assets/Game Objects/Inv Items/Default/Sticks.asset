@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7590d384c0616479a937714f6f6d762e, type: 3}
   m_Name: Sticks
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 231257174ca4f406dad141a91a30eb8f, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 0889f5cf548af7c409f6bf83bfe30c95, type: 3}
+  characterDisplay: {fileID: 0}
   stackable: 1
   type: 5
   description: For Making Small Structures or Building Fires
