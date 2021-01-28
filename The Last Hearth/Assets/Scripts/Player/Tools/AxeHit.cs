@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class AxeHit : MonoBehaviour
 {
+
     Animator anim;
     public Camera axeCam ;
     public GameObject impactEffect;
